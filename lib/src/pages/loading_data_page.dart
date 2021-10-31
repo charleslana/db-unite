@@ -131,7 +131,7 @@ class LoadingDataPage extends StatelessWidget {
                                                                   homeController
                                                                           .name =
                                                                       value;
-                                                                  Get.offNamed<
+                                                                  Get.offAllNamed<
                                                                           dynamic>(
                                                                       AppRoutes
                                                                           .home);
