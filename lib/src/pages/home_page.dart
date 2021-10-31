@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
         backgroundColor: AppConstants.colorScaffoldHome,
         body: Column(
           children: [
-            SizedBox(height: Get.statusBarHeight),
+            SizedBox(height: MediaQuery.of(context).padding.top),
             Container(
               width: Get.width,
               height: 150,
