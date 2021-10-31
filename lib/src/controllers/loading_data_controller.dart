@@ -10,7 +10,7 @@ class LoadingDataController extends GetxController {
   @override
   void onInit() {
     Timer(
-      const Duration(seconds: 3),
+      const Duration(seconds: 1),
       () => isLoading.value = false,
     );
     super.onInit();

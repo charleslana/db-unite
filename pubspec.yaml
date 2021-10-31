@@ -31,7 +31,10 @@ flutter:
         - asset: assets/fonts/HelveticaNeueLTPro-XBlkCn.otf
     - family: HelveticaNeueLTProMedium
       fonts:
-        - asset: assets/fonts/HelveticaNeueLTPro-MdCn.otf    
+        - asset: assets/fonts/HelveticaNeueLTPro-MdCn.otf
+    - family: HelveticaNeueLTProLight
+      fonts:
+        - asset: assets/fonts/HelveticaNeueLTProLt.otf        
 
 flutter_icons:
   android: true
