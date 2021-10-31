@@ -6,6 +6,7 @@ class LoadingDataController extends GetxController {
   RxBool isLoading = true.obs;
   RxBool isConnected = true.obs;
   RxBool isNewVersionApp = false.obs;
+  final RxString _name = ''.obs;
 
   @override
   void onInit() {
@@ -14,5 +15,11 @@ class LoadingDataController extends GetxController {
       () => isLoading.value = false,
     );
     super.onInit();
+  }
+
+  String get name => _name.value;
+
+  set name(String newName) {
+    _name.value = newName;
   }
 }

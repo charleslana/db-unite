@@ -1,7 +1,6 @@
 import 'package:db_unite/src/components/button_orange.dart';
 import 'package:db_unite/src/components/pokeball_loading.dart';
 import 'package:db_unite/src/constants/app_constants.dart';
-import 'package:db_unite/src/controllers/home_controller.dart';
 import 'package:db_unite/src/controllers/loading_data_controller.dart';
 import 'package:db_unite/src/routes/app_route_generator.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,6 @@ class LoadingDataPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final LoadingDataController loadingDataController =
         Get.put(LoadingDataController());
-    final HomeController homeController = Get.put(HomeController());
     final GlobalKey<FormState> key = GlobalKey<FormState>();
 
     return SafeArea(
@@ -75,7 +73,8 @@ class LoadingDataPage extends StatelessWidget {
                                         widthFactor: 0.4,
                                         heightFactor: 0.05,
                                         child: ButtonOrange(
-                                          onPressed: homeController.name.isEmpty
+                                          onPressed: loadingDataController
+                                                  .name.isEmpty
                                               ? () => Get.bottomSheet<dynamic>(
                                                       Container(
                                                     color: Theme.of(context)
@@ -128,13 +127,9 @@ class LoadingDataPage extends StatelessWidget {
                                                                       20) {
                                                                     return 'Seu nome deve conter no máximo 20 caracteres.';
                                                                   }
-                                                                  homeController
+                                                                  loadingDataController
                                                                           .name =
                                                                       value;
-                                                                  Get.offAllNamed<
-                                                                          dynamic>(
-                                                                      AppRoutes
-                                                                          .home);
                                                                   return null;
                                                                 },
                                                               ),
@@ -142,9 +137,15 @@ class LoadingDataPage extends StatelessWidget {
                                                             const SizedBox(
                                                                 height: 20),
                                                             ButtonOrange(
-                                                                onPressed: () => key
-                                                                    .currentState!
-                                                                    .validate(),
+                                                                onPressed:
+                                                                    () => {
+                                                                          if (key
+                                                                              .currentState!
+                                                                              .validate())
+                                                                            {
+                                                                              Get.toNamed<dynamic>(AppRoutes.home),
+                                                                            }
+                                                                        },
                                                                 text:
                                                                     'Continuar'),
                                                           ],
@@ -152,7 +153,7 @@ class LoadingDataPage extends StatelessWidget {
                                                       ),
                                                     ),
                                                   ))
-                                              : () => Get.offNamed<dynamic>(
+                                              : () => Get.toNamed<dynamic>(
                                                   AppRoutes.home),
                                           text: 'Entrar',
                                         ),
