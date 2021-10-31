@@ -26,17 +26,18 @@ class LoadingDataPage extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            child: Stack(
-              children: [
-                Center(
-                  child: Container(
-                    width: Get.width * 0.75,
-                    decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.5),
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    ),
-                    child: Obx(() {
-                      return Padding(
+            child: Obx(() {
+              return Stack(
+                children: [
+                  Center(
+                    child: Container(
+                      width: Get.width * 0.75,
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.5),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: Padding(
                         padding: const EdgeInsets.all(10),
                         child: loadingDataController.isConnected.value
                             ? loadingDataController.isNewVersionApp.value
@@ -165,34 +166,37 @@ class LoadingDataPage extends StatelessWidget {
                                   fontSize: 16,
                                 ),
                               ),
-                      );
-                    }),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.5),
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        topRight: Radius.circular(10),
                       ),
                     ),
-                    child: const Padding(
-                      padding: EdgeInsets.all(5),
-                      child: Text(
-                        'Certifique-se que haja conexão com a internet.',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
+                  ),
+                  Visibility(
+                    visible: loadingDataController.isLoading.value,
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.5),
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10),
+                          ),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.all(5),
+                          child: Text(
+                            'Certifique-se que haja conexão com a internet.',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                            ),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              );
+            }),
           ),
         ),
       ),
