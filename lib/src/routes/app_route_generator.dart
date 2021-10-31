@@ -23,6 +23,7 @@ class AppRouteGenerator {
         return GetPageRoute(
           page: () => const HomePage(),
           settings: settings,
+          transition: Transition.rightToLeft,
         );
       default:
         return GetPageRoute(
