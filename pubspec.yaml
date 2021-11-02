@@ -24,7 +24,8 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/layout/  
+    - assets/images/layout/
+    - assets/images/grid/
   fonts:
     - family: HelveticaNeueLTProExtraBlack
       fonts:
@@ -39,4 +40,4 @@ flutter:
 flutter_icons:
   android: true
   ios: true
-  image_path: assets/images/
+  image_path: assets/images/layout/logo.png

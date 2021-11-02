@@ -1,5 +1,6 @@
 import 'package:db_unite/src/constants/app_constants.dart';
 import 'package:db_unite/src/controllers/loading_data_controller.dart';
+import 'package:db_unite/src/data/home_grid_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -86,18 +87,49 @@ class HomePage extends StatelessWidget {
                     crossAxisCount: 2,
                     childAspectRatio: Get.width / (Get.height / 2),
                   ),
-                  itemCount: 8,
+                  itemCount: HomeGridData().list.length,
                   itemBuilder: (_, index) {
+                    final homeGrid = HomeGridData().list[index];
+
                     return GestureDetector(
-                      onTap: () {},
+                      onTap: () => Get.toNamed<dynamic>(homeGrid.route),
                       child: Card(
                         color: AppConstants.colorGridHome,
-                        child: Center(
-                          child: Text(
-                            index.toString(),
-                            style: const TextStyle(
-                                color: AppConstants.colorTextHome),
-                          ),
+                        child: Stack(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(2),
+                              child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Opacity(
+                                  opacity: 0.1,
+                                  child:
+                                      Image.asset(AppConstants.imagePokeball),
+                                ),
+                              ),
+                            ),
+                            Center(
+                              child: Column(
+                                children: [
+                                  Flexible(
+                                      flex: 5,
+                                      child: Image.asset(homeGrid.image)),
+                                  Flexible(
+                                    child: FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: Text(
+                                        homeGrid.text,
+                                        style: const TextStyle(
+                                          color: AppConstants.colorTextHome,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     );

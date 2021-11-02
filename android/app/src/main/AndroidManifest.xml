@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.db_unite">
+   <uses-permission android:name="android.permission.INTERNET"/>  
    <application
-        android:label="db_unite"
+        android:label="DB Unite"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
