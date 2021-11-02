@@ -78,6 +78,7 @@ class PokemonListPage extends StatelessWidget {
                             ),
                             Center(
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Flexible(
                                     flex: 4,
