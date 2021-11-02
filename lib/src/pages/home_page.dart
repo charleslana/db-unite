@@ -94,22 +94,22 @@ class HomePage extends StatelessWidget {
                     return GestureDetector(
                       onTap: () => Get.toNamed<dynamic>(homeGrid.route),
                       child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        ),
                         color: AppConstants.colorGridHome,
-                        child: Stack(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(2),
-                              child: Align(
-                                alignment: Alignment.centerRight,
+                        child: Center(
+                          child: Stack(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(2),
                                 child: Opacity(
                                   opacity: 0.1,
                                   child:
                                       Image.asset(AppConstants.imagePokeball),
                                 ),
                               ),
-                            ),
-                            Center(
-                              child: Column(
+                              Column(
                                 children: [
                                   Flexible(
                                       flex: 5,
@@ -128,8 +128,8 @@ class HomePage extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     );
