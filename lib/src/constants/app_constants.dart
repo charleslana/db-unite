@@ -10,6 +10,7 @@ class AppConstants {
   static const Color colorTextHome = Colors.white;
   static const Color colorGridHome = Color(0xff1d1533);
   static const Color colorScaffoldHome = Color(0xff312457);
+  static const String imagePokeball = 'assets/images/layout/pokeball.png';
 
   ThemeData themeLight = ThemeData(
     fontFamily: 'HelveticaNeueLTProMedium',

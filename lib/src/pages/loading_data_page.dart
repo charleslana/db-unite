@@ -74,88 +74,90 @@ class LoadingDataPage extends StatelessWidget {
                                         widthFactor: 0.4,
                                         heightFactor: 0.05,
                                         child: ButtonOrange(
-                                          onPressed: loadingDataController
-                                                  .name.isEmpty
-                                              ? () => Get.bottomSheet<dynamic>(
-                                                      Container(
-                                                    color: Theme.of(context)
-                                                        .primaryColor,
-                                                    child: Padding(
-                                                      padding: const EdgeInsets
-                                                              .symmetric(
-                                                          horizontal: 30,
-                                                          vertical: 15),
-                                                      child: Center(
-                                                        child: Column(
-                                                          children: [
-                                                            const Text(
-                                                              'Esta é a primeira vez que você entra no aplicativo.',
-                                                              style: TextStyle(
-                                                                  fontSize: 16),
-                                                            ),
-                                                            const Text(
-                                                              'Por favor digite seu nome',
-                                                              style: TextStyle(
-                                                                  fontSize: 16),
-                                                            ),
-                                                            const SizedBox(
-                                                                height: 20),
-                                                            Form(
-                                                              key: key,
-                                                              child:
-                                                                  TextFormField(
-                                                                decoration:
-                                                                    const InputDecoration(
-                                                                  labelText:
-                                                                      'Nome',
-                                                                  border:
-                                                                      OutlineInputBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius.all(
-                                                                            Radius.circular(25)),
+                                          onTap:
+                                              loadingDataController.name.isEmpty
+                                                  ? () =>
+                                                      Get.bottomSheet<dynamic>(
+                                                          Container(
+                                                        color: Theme.of(context)
+                                                            .primaryColor,
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .symmetric(
+                                                                  horizontal:
+                                                                      30,
+                                                                  vertical: 15),
+                                                          child: Center(
+                                                            child: Column(
+                                                              children: [
+                                                                const Text(
+                                                                  'Esta é a primeira vez que você entra no aplicativo.',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          16),
+                                                                ),
+                                                                const Text(
+                                                                  'Por favor digite seu nome',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          16),
+                                                                ),
+                                                                const SizedBox(
+                                                                    height: 20),
+                                                                Form(
+                                                                  key: key,
+                                                                  child:
+                                                                      TextFormField(
+                                                                    decoration:
+                                                                        const InputDecoration(
+                                                                      labelText:
+                                                                          'Nome',
+                                                                      border:
+                                                                          OutlineInputBorder(
+                                                                        borderRadius:
+                                                                            BorderRadius.all(Radius.circular(25)),
+                                                                      ),
+                                                                    ),
+                                                                    validator:
+                                                                        (String?
+                                                                            value) {
+                                                                      if (value!
+                                                                          .trim()
+                                                                          .isEmpty) {
+                                                                        return 'Por favor insira seu nome.';
+                                                                      }
+                                                                      if (value
+                                                                              .length >
+                                                                          20) {
+                                                                        return 'Seu nome deve conter no máximo 20 caracteres.';
+                                                                      }
+                                                                      loadingDataController
+                                                                              .name =
+                                                                          value;
+                                                                      return null;
+                                                                    },
                                                                   ),
                                                                 ),
-                                                                validator:
-                                                                    (String?
-                                                                        value) {
-                                                                  if (value!
-                                                                      .trim()
-                                                                      .isEmpty) {
-                                                                    return 'Por favor insira seu nome.';
-                                                                  }
-                                                                  if (value
-                                                                          .length >
-                                                                      20) {
-                                                                    return 'Seu nome deve conter no máximo 20 caracteres.';
-                                                                  }
-                                                                  loadingDataController
-                                                                          .name =
-                                                                      value;
-                                                                  return null;
-                                                                },
-                                                              ),
+                                                                const SizedBox(
+                                                                    height: 20),
+                                                                ButtonOrange(
+                                                                    onTap:
+                                                                        () => {
+                                                                              if (key.currentState!.validate())
+                                                                                {
+                                                                                  Get.toNamed<dynamic>(AppRoutes.home),
+                                                                                }
+                                                                            },
+                                                                    text:
+                                                                        'Continuar'),
+                                                              ],
                                                             ),
-                                                            const SizedBox(
-                                                                height: 20),
-                                                            ButtonOrange(
-                                                                onPressed:
-                                                                    () => {
-                                                                          if (key
-                                                                              .currentState!
-                                                                              .validate())
-                                                                            {
-                                                                              Get.toNamed<dynamic>(AppRoutes.home),
-                                                                            }
-                                                                        },
-                                                                text:
-                                                                    'Continuar'),
-                                                          ],
+                                                          ),
                                                         ),
-                                                      ),
-                                                    ),
-                                                  ))
-                                              : () => Get.toNamed<dynamic>(
-                                                  AppRoutes.home),
+                                                      ))
+                                                  : () => Get.toNamed<dynamic>(
+                                                      AppRoutes.home),
                                           text: 'Entrar',
                                         ),
                                       )
