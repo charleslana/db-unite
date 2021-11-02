@@ -17,7 +17,7 @@ class ButtonOrange extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: 88,
-        height: 30,
+        height: 36,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           color: Colors.deepOrangeAccent,
