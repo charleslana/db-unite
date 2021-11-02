@@ -98,18 +98,19 @@ class HomePage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(25),
                         ),
                         color: AppConstants.colorGridHome,
-                        child: Center(
-                          child: Stack(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(2),
-                                child: Opacity(
-                                  opacity: 0.1,
-                                  child:
-                                      Image.asset(AppConstants.imagePokeball),
-                                ),
+                        child: Stack(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(2),
+                              child: Opacity(
+                                opacity: 0.1,
+                                child: Center(
+                                    child: Image.asset(
+                                        AppConstants.imagePokeball)),
                               ),
-                              Column(
+                            ),
+                            Center(
+                              child: Column(
                                 children: [
                                   Flexible(
                                       flex: 5,
@@ -128,8 +129,8 @@ class HomePage extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     );

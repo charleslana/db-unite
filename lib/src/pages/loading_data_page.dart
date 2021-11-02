@@ -34,8 +34,7 @@ class LoadingDataPage extends StatelessWidget {
                       width: Get.width * 0.75,
                       decoration: BoxDecoration(
                         color: Colors.black.withOpacity(0.5),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(10),
@@ -110,13 +109,13 @@ class LoadingDataPage extends StatelessWidget {
                                                                   child:
                                                                       TextFormField(
                                                                     decoration:
-                                                                        const InputDecoration(
+                                                                        InputDecoration(
                                                                       labelText:
                                                                           'Nome',
                                                                       border:
                                                                           OutlineInputBorder(
                                                                         borderRadius:
-                                                                            BorderRadius.all(Radius.circular(25)),
+                                                                            BorderRadius.circular(25),
                                                                       ),
                                                                     ),
                                                                     validator:
