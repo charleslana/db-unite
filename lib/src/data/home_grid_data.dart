@@ -7,7 +7,7 @@ class HomeGridData {
     HomeGridModel(
       image: AppConstants.imagePokemonGrid,
       text: 'Pokémon',
-      route: AppRoutes.home,
+      route: AppRoutes.pokemonList,
     ),
     HomeGridModel(
       image: AppConstants.imageHeldItemsGrid,

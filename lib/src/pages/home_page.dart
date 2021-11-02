@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
                 width: Get.width,
                 height: 150,
                 decoration: const BoxDecoration(
-                  color: AppConstants.colorMenuHome,
+                  color: AppConstants.colorAppBar,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(20),
                     bottomRight: Radius.circular(20),
@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
                             text: TextSpan(
                               text: 'Olá, ',
                               style: const TextStyle(
-                                color: AppConstants.colorTextHome,
+                                color: AppConstants.colorAppBarText,
                                 fontFamily: 'HelveticaNeueLTProLight',
                                 fontSize: 15,
                               ),
@@ -53,7 +53,7 @@ class HomePage extends StatelessWidget {
                                 TextSpan(
                                   text: loadingDataController.name,
                                   style: const TextStyle(
-                                    color: AppConstants.colorTextHome,
+                                    color: AppConstants.colorAppBarText,
                                     fontSize: 20,
                                     fontFamily: 'HelveticaNeueLTProMedium',
                                   ),
@@ -71,7 +71,7 @@ class HomePage extends StatelessWidget {
                           onPressed: () {},
                           icon: const Icon(
                             Icons.settings,
-                            color: AppConstants.colorTextHome,
+                            color: AppConstants.colorAppBarText,
                           ),
                         ),
                       ),
@@ -121,7 +121,7 @@ class HomePage extends StatelessWidget {
                                       child: Text(
                                         homeGrid.text,
                                         style: const TextStyle(
-                                          color: AppConstants.colorTextHome,
+                                          color: AppConstants.colorAppBarText,
                                           fontSize: 18,
                                         ),
                                       ),

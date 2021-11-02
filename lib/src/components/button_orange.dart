@@ -13,46 +13,51 @@ class ButtonOrange extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
+    return Material(
+      color: Colors.transparent,
+      child: Ink(
         width: 88,
         height: 36,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           color: Colors.deepOrangeAccent,
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 5),
-          child: Stack(
-            children: [
-              Align(
-                alignment: Alignment.centerRight,
-                child: Padding(
-                  padding: const EdgeInsets.all(2),
-                  child: Opacity(
-                    opacity: 0.2,
-                    child: Image.asset(AppConstants.imagePokeball),
+        child: InkWell(
+          splashColor: Colors.orangeAccent.withOpacity(0.2),
+          borderRadius: BorderRadius.circular(50),
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5),
+            child: Stack(
+              children: [
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(2),
+                    child: Opacity(
+                      opacity: 0.2,
+                      child: Image.asset(AppConstants.imagePokeball),
+                    ),
                   ),
                 ),
-              ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 4),
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Text(
-                      text,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 4),
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        text,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

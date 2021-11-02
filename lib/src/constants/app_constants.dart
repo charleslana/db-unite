@@ -6,8 +6,8 @@ class AppConstants {
       'assets/images/layout/loading-data.jpg';
   static const String imagePokeballLoading =
       'assets/images/layout/pokeball-loading.png';
-  static const Color colorMenuHome = Color(0xff271d45);
-  static const Color colorTextHome = Colors.white;
+  static const Color colorAppBar = Color(0xff271d45);
+  static const Color colorAppBarText = Colors.white;
   static const Color colorGridHome = Color(0xff1d1533);
   static const Color colorScaffoldHome = Color(0xff312457);
   static const String imagePokeball = 'assets/images/layout/pokeball.png';
