@@ -13,7 +13,7 @@ class PokemonListPage extends StatelessWidget {
       child: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Scaffold(
-          backgroundColor: AppConstants.colorScaffoldHome,
+          backgroundColor: AppConstants.colorScaffold,
           appBar: AppBar(
             leading: IconButton(
               onPressed: Get.back,
@@ -46,73 +46,63 @@ class PokemonListPage extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: GridView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.all(12),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4,
-                    childAspectRatio: Get.width / (Get.height / 1.5),
-                  ),
-                  itemCount: 26,
-                  itemBuilder: (_, index) {
-                    const String image =
-                        'https://raw.githubusercontent.com/charleslana/api-pokemon-unite/master/pokemon/thumbnail/359.png';
-
-                    return GestureDetector(
-                      onTap: () => {},
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        color: AppConstants.colorGridHome,
-                        child: Stack(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(2),
-                              child: Opacity(
-                                opacity: 0.1,
-                                child: Center(
-                                    child: Image.asset(
-                                        AppConstants.imagePokeball)),
-                              ),
-                            ),
-                            Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Flexible(
-                                    flex: 4,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(12),
-                                      child: CachedNetworkImage(
-                                        placeholder: (_, __) =>
-                                            const PokeballLoading(),
-                                        imageUrl: image,
-                                        fit: BoxFit.fill,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 10),
-                                  const Flexible(
-                                    child: FittedBox(
-                                      fit: BoxFit.scaleDown,
-                                      child: Text(
-                                        'Absol',
-                                        style: TextStyle(
-                                          color: AppConstants.colorAppBarText,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+                child: Stack(
+                  children: [
+                    SizedBox(
+                      width: Get.width,
+                      child: Opacity(
+                        opacity: 0.1,
+                        child: Image.asset(AppConstants.imagePokeball),
                       ),
-                    );
-                  },
+                    ),
+                    GridView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      padding: const EdgeInsets.all(12),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 4,
+                        childAspectRatio: Get.width / (Get.height / 1.5),
+                      ),
+                      itemCount: 26,
+                      itemBuilder: (_, index) {
+                        const String image =
+                            'https://raw.githubusercontent.com/charleslana/api-pokemon-unite/master/pokemon/thumbnail/359.png';
+
+                        return GestureDetector(
+                          onTap: () => {},
+                          child: Column(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(30),
+                                child: Container(
+                                  height: 60,
+                                  color: AppConstants.colorAvatar,
+                                  child: CachedNetworkImage(
+                                    placeholder: (_, __) =>
+                                        const PokeballLoading(),
+                                    imageUrl: image,
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              const Flexible(
+                                child: FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Text(
+                                    'Absol',
+                                    style: TextStyle(
+                                      color: AppConstants.colorAppBarText,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ),
             ],

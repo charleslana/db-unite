@@ -35,7 +35,7 @@ class ButtonOrange extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(2),
                     child: Opacity(
-                      opacity: 0.2,
+                      opacity: 0.1,
                       child: Image.asset(AppConstants.imagePokeball),
                     ),
                   ),

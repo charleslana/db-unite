@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
       },
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: AppConstants.colorScaffoldHome,
+          backgroundColor: AppConstants.colorScaffold,
           body: Column(
             children: [
               Container(
@@ -80,61 +80,57 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: GridView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.all(12),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: Get.width / (Get.height / 2),
-                  ),
-                  itemCount: HomeGridData().list.length,
-                  itemBuilder: (_, index) {
-                    final homeGrid = HomeGridData().list[index];
+                child: Stack(
+                  children: [
+                    SizedBox(
+                      width: Get.width,
+                      child: Opacity(
+                        opacity: 0.1,
+                        child: Image.asset(AppConstants.imagePokeball),
+                      ),
+                    ),
+                    GridView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      padding: const EdgeInsets.all(12),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: Get.width / (Get.height / 2),
+                      ),
+                      itemCount: HomeGridData().list.length,
+                      itemBuilder: (_, index) {
+                        final homeGrid = HomeGridData().list[index];
 
-                    return GestureDetector(
-                      onTap: () => Get.toNamed<dynamic>(homeGrid.route),
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        color: AppConstants.colorGridHome,
-                        child: Stack(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(2),
-                              child: Opacity(
-                                opacity: 0.1,
-                                child: Center(
-                                    child: Image.asset(
-                                        AppConstants.imagePokeball)),
+                        return GestureDetector(
+                          onTap: () => Get.toNamed<dynamic>(homeGrid.route),
+                          child: Column(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(50),
+                                child: Container(
+                                  height: 100,
+                                  color: AppConstants.colorAvatar,
+                                  child: Image.asset(homeGrid.image),
+                                ),
                               ),
-                            ),
-                            Center(
-                              child: Column(
-                                children: [
-                                  Flexible(
-                                      flex: 5,
-                                      child: Image.asset(homeGrid.image)),
-                                  Flexible(
-                                    child: FittedBox(
-                                      fit: BoxFit.scaleDown,
-                                      child: Text(
-                                        homeGrid.text,
-                                        style: const TextStyle(
-                                          color: AppConstants.colorAppBarText,
-                                          fontSize: 18,
-                                        ),
-                                      ),
+                              const SizedBox(height: 10),
+                              Flexible(
+                                child: FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Text(
+                                    homeGrid.text,
+                                    style: const TextStyle(
+                                      color: AppConstants.colorAppBarText,
+                                      fontSize: 18,
                                     ),
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ),
             ],
