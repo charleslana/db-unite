@@ -84,9 +84,13 @@ class HomePage extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: Get.width,
+                      height: Get.height,
                       child: Opacity(
                         opacity: 0.1,
-                        child: Image.asset(AppConstants.imagePokeball),
+                        child: Image.asset(
+                          AppConstants.imagePokeball,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                     GridView.builder(
