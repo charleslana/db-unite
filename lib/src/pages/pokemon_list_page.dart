@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:db_unite/src/components/custom_app_bar.dart';
 import 'package:db_unite/src/components/pokeball_loading.dart';
 import 'package:db_unite/src/constants/app_constants.dart';
 import 'package:flutter/material.dart';
@@ -14,15 +15,7 @@ class PokemonListPage extends StatelessWidget {
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Scaffold(
           backgroundColor: AppConstants.colorScaffold,
-          appBar: AppBar(
-            leading: IconButton(
-              onPressed: Get.back,
-              icon: const Icon(Icons.arrow_back_ios_new),
-            ),
-            title: const Text('Pokémon'),
-            centerTitle: true,
-            backgroundColor: AppConstants.colorAppBar,
-          ),
+          appBar: const CustomAppBar(title: 'Pokémon (total: 26)'),
           body: Column(
             children: [
               Padding(
