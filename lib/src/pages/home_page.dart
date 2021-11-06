@@ -1,3 +1,4 @@
+import 'package:db_unite/src/components/custom_circle_avatar.dart';
 import 'package:db_unite/src/constants/color_constants.dart';
 import 'package:db_unite/src/constants/image_constants.dart';
 import 'package:db_unite/src/controllers/loading_data_controller.dart';
@@ -99,7 +100,7 @@ class HomePage extends StatelessWidget {
                       padding: const EdgeInsets.all(12),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio: Get.width / (Get.height / 2),
+                        childAspectRatio: Get.width / (Get.height / 1.5),
                       ),
                       itemCount: HomeGridData().list.length,
                       itemBuilder: (_, index) {
@@ -109,13 +110,9 @@ class HomePage extends StatelessWidget {
                           onTap: () => Get.toNamed<dynamic>(homeGrid.route),
                           child: Column(
                             children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(50),
-                                child: Container(
-                                  height: 100,
-                                  color: ColorConstants.avatar,
-                                  child: Image.asset(homeGrid.image),
-                                ),
+                              CustomCircleAvatar(
+                                image: homeGrid.image,
+                                height: 100,
                               ),
                               const SizedBox(height: 10),
                               Flexible(

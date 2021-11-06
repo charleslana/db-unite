@@ -32,12 +32,17 @@ class PokemonDetailsPage extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                Slider(
-                  value: loadingDataController.pokemonLevel.value,
-                  onChanged: (double value) =>
-                      loadingDataController.pokemonLevel.value = value,
-                  min: 1,
-                  max: 15,
+                SliderTheme(
+                  data: const SliderThemeData(
+                    trackHeight: 8,
+                  ),
+                  child: Slider(
+                    value: loadingDataController.pokemonLevel.value,
+                    onChanged: (double value) =>
+                        loadingDataController.pokemonLevel.value = value,
+                    min: 1,
+                    max: 15,
+                  ),
                 ),
                 SizedBox(
                   height: 50,

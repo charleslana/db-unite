@@ -5,7 +5,7 @@ class CardInfo extends StatelessWidget {
   const CardInfo({
     required this.title,
     required this.value,
-    required this.isOpacity,
+    this.isOpacity = false,
     Key? key,
   }) : super(key: key);
 

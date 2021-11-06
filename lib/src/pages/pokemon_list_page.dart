@@ -1,7 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:db_unite/src/components/custom_app_bar.dart';
+import 'package:db_unite/src/components/custom_circle_avatar.dart';
 import 'package:db_unite/src/components/filter_pokemon.dart';
-import 'package:db_unite/src/components/pokeball_loading.dart';
 import 'package:db_unite/src/constants/color_constants.dart';
 import 'package:db_unite/src/constants/image_constants.dart';
 import 'package:db_unite/src/controllers/loading_data_controller.dart';
@@ -70,14 +69,11 @@ class PokemonListPage extends StatelessWidget {
                       physics: const BouncingScrollPhysics(),
                       padding: const EdgeInsets.all(12),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 4,
+                        crossAxisCount: 3,
                         childAspectRatio: Get.width / (Get.height / 1.5),
                       ),
                       itemCount: 26,
                       itemBuilder: (_, index) {
-                        const String image =
-                            'https://raw.githubusercontent.com/charleslana/api-pokemon-unite/master/pokemon/thumbnail/359.png';
-
                         return GestureDetector(
                           onTap: () => {
                             loadingDataController
@@ -86,22 +82,15 @@ class PokemonListPage extends StatelessWidget {
                             Get.toNamed<dynamic>(AppRoutes.pokemonDetails),
                           },
                           child: Column(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(30),
-                                child: Container(
-                                  height: 60,
-                                  color: ColorConstants.avatar,
-                                  child: CachedNetworkImage(
-                                    placeholder: (_, __) =>
-                                        const PokeballLoading(),
-                                    imageUrl: image,
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
+                            children: const [
+                              CustomCircleAvatar(
+                                image:
+                                    'https://raw.githubusercontent.com/charleslana/api-pokemon-unite/master/pokemon/thumbnail/359.png',
+                                height: 60,
+                                isNetwork: true,
                               ),
-                              const SizedBox(height: 10),
-                              const Flexible(
+                              SizedBox(height: 10),
+                              Flexible(
                                 child: FittedBox(
                                   fit: BoxFit.scaleDown,
                                   child: Text(
