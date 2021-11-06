@@ -1,6 +1,6 @@
 import 'package:db_unite/src/components/button_orange.dart';
 import 'package:db_unite/src/components/pokeball_loading.dart';
-import 'package:db_unite/src/constants/app_constants.dart';
+import 'package:db_unite/src/constants/image_constants.dart';
 import 'package:db_unite/src/controllers/loading_data_controller.dart';
 import 'package:db_unite/src/routes/app_route_generator.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +22,7 @@ class LoadingDataPage extends StatelessWidget {
           body: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(AppConstants.imageLoadingData),
+                image: AssetImage(ImageConstants.loadingData),
                 fit: BoxFit.cover,
               ),
             ),

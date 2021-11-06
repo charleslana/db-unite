@@ -1,5 +1,6 @@
 import 'package:db_unite/src/pages/home_page.dart';
 import 'package:db_unite/src/pages/loading_data_page.dart';
+import 'package:db_unite/src/pages/pokemon_details.dart';
 import 'package:db_unite/src/pages/pokemon_list_page.dart';
 import 'package:db_unite/src/pages/splashscreen_page.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,12 @@ class AppRouteGenerator {
           page: () => const PokemonListPage(),
           settings: settings,
           transition: Transition.leftToRight,
+        );
+      case AppRoutes.pokemonDetails:
+        return GetPageRoute(
+          page: () => const PokemonDetails(),
+          settings: settings,
+          transition: Transition.rightToLeft,
         );
       default:
         return GetPageRoute(

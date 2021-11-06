@@ -1,4 +1,4 @@
-import 'package:db_unite/src/constants/app_constants.dart';
+import 'package:db_unite/src/constants/theme_constants.dart';
 import 'package:db_unite/src/routes/app_route_generator.dart';
 import 'package:db_unite/src/services/theme_service.dart';
 import 'package:flutter/material.dart';
@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
       title: 'DB Unite',
       locale: Get.deviceLocale,
       fallbackLocale: const Locale('en', 'US'),
-      theme: AppConstants().themeLight,
-      darkTheme: AppConstants().themeDark,
+      theme: ThemeConstants().light,
+      darkTheme: ThemeConstants().dark,
       themeMode: ThemeService().theme,
       initialRoute: AppRoutes.splashscreen,
       defaultTransition: Transition.fade,

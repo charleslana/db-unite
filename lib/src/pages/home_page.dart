@@ -1,4 +1,5 @@
-import 'package:db_unite/src/constants/app_constants.dart';
+import 'package:db_unite/src/constants/color_constants.dart';
+import 'package:db_unite/src/constants/image_constants.dart';
 import 'package:db_unite/src/controllers/loading_data_controller.dart';
 import 'package:db_unite/src/data/home_grid_data.dart';
 import 'package:flutter/material.dart';
@@ -20,14 +21,14 @@ class HomePage extends StatelessWidget {
       },
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: AppConstants.colorScaffold,
+          backgroundColor: ColorConstants.scaffold,
           body: Column(
             children: [
               Container(
                 width: Get.width,
                 height: 150,
                 decoration: const BoxDecoration(
-                  color: AppConstants.colorAppBar,
+                  color: ColorConstants.appBarBackground,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(20),
                     bottomRight: Radius.circular(20),
@@ -45,7 +46,7 @@ class HomePage extends StatelessWidget {
                             text: TextSpan(
                               text: 'Olá, ',
                               style: const TextStyle(
-                                color: AppConstants.colorAppBarText,
+                                color: ColorConstants.text,
                                 fontFamily: 'HelveticaNeueLTProLight',
                                 fontSize: 15,
                               ),
@@ -53,7 +54,7 @@ class HomePage extends StatelessWidget {
                                 TextSpan(
                                   text: loadingDataController.name,
                                   style: const TextStyle(
-                                    color: AppConstants.colorAppBarText,
+                                    color: ColorConstants.text,
                                     fontSize: 20,
                                     fontFamily: 'HelveticaNeueLTProMedium',
                                   ),
@@ -71,7 +72,7 @@ class HomePage extends StatelessWidget {
                           onPressed: () {},
                           icon: const Icon(
                             Icons.settings,
-                            color: AppConstants.colorAppBarText,
+                            color: ColorConstants.text,
                           ),
                         ),
                       ),
@@ -88,7 +89,7 @@ class HomePage extends StatelessWidget {
                       child: Opacity(
                         opacity: 0.1,
                         child: Image.asset(
-                          AppConstants.imagePokeball,
+                          ImageConstants.pokeball,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -112,7 +113,7 @@ class HomePage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(50),
                                 child: Container(
                                   height: 100,
-                                  color: AppConstants.colorAvatar,
+                                  color: ColorConstants.avatar,
                                   child: Image.asset(homeGrid.image),
                                 ),
                               ),
@@ -123,7 +124,7 @@ class HomePage extends StatelessWidget {
                                   child: Text(
                                     homeGrid.text,
                                     style: const TextStyle(
-                                      color: AppConstants.colorAppBarText,
+                                      color: ColorConstants.text,
                                       fontSize: 18,
                                     ),
                                   ),

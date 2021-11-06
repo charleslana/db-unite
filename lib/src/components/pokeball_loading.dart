@@ -1,6 +1,6 @@
 import 'dart:math' as math;
 
-import 'package:db_unite/src/constants/app_constants.dart';
+import 'package:db_unite/src/constants/image_constants.dart';
 import 'package:db_unite/src/controllers/pokeball_loading_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -23,7 +23,7 @@ class PokeballLoading extends StatelessWidget {
         );
       },
       child: Image.asset(
-        AppConstants.imagePokeballLoading,
+        ImageConstants.pokeballLoading,
         height: 42,
       ),
     );

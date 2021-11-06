@@ -1,4 +1,4 @@
-import 'package:db_unite/src/constants/app_constants.dart';
+import 'package:db_unite/src/constants/image_constants.dart';
 import 'package:flutter/material.dart';
 
 class ButtonOrange extends StatelessWidget {
@@ -36,7 +36,7 @@ class ButtonOrange extends StatelessWidget {
                     padding: const EdgeInsets.all(2),
                     child: Opacity(
                       opacity: 0.1,
-                      child: Image.asset(AppConstants.imagePokeball),
+                      child: Image.asset(ImageConstants.pokeball),
                     ),
                   ),
                 ),

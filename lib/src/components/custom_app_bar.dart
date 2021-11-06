@@ -1,4 +1,4 @@
-import 'package:db_unite/src/constants/app_constants.dart';
+import 'package:db_unite/src/constants/color_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,7 +22,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       title: Text(title),
       centerTitle: true,
-      backgroundColor: AppConstants.colorAppBar,
+      backgroundColor: ColorConstants.appBarBackground,
     );
   }
 }

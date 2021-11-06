@@ -1,4 +1,4 @@
-import 'package:db_unite/src/constants/app_constants.dart';
+import 'package:db_unite/src/constants/image_constants.dart';
 import 'package:db_unite/src/controllers/splashscreen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,7 +20,7 @@ class SplashscreenPage extends StatelessWidget {
                 children: [
                   SizedBox(
                     height: 100,
-                    child: Image.asset(AppConstants.imageLogo),
+                    child: Image.asset(ImageConstants.logo),
                   ),
                   const SizedBox(height: 30),
                   const Text(

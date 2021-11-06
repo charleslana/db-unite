@@ -9,6 +9,10 @@ class LoadingDataController extends GetxController {
   RxBool isNewVersionApp = false.obs;
   final RxString _name = ''.obs;
   LoadingDataService loadingDataService = LoadingDataService();
+  RxList<String> pokemonList = <String>[].obs;
+  RxList<String> pokemonFilterList = <String>[].obs;
+  RxInt pokemonIndex = 0.obs;
+  RxDouble pokemonLevel = 1.0.obs;
 
   @override
   void onInit() {
