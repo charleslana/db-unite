@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:db_unite/src/components/custom_app_bar.dart';
+import 'package:db_unite/src/components/filter_pokemon.dart';
 import 'package:db_unite/src/components/pokeball_loading.dart';
 import 'package:db_unite/src/constants/app_constants.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,13 @@ class PokemonListPage extends StatelessWidget {
                       ),
                     ),
                   ),
+                ),
+              ),
+              const SizedBox(
+                height: 50,
+                child: Padding(
+                  padding: EdgeInsets.all(12),
+                  child: FilterPokemon(),
                 ),
               ),
               Expanded(
