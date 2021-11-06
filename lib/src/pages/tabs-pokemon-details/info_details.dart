@@ -59,27 +59,6 @@ class InfoDetails extends StatelessWidget {
                         ChipInfo(text: 'Defender'),
                       ],
                     ),
-                    const SizedBox(height: 10),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child: RichText(
-                        text: const TextSpan(
-                          text: 'Note: ',
-                          style: TextStyle(color: ColorConstants.yellow),
-                          children: [
-                            TextSpan(
-                              text:
-                                  'Only basic attacks can critically strike, but Blastoise has 0% base Critical-Hit rate at all levels.',
-                              style: TextStyle(
-                                fontFamily: 'HelveticaNeueLTProLight',
-                                fontSize: 15,
-                                color: ColorConstants.gray,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -127,6 +106,27 @@ class InfoDetails extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+          const SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5),
+            child: RichText(
+              text: const TextSpan(
+                text: 'Note: ',
+                style: TextStyle(color: ColorConstants.yellow),
+                children: [
+                  TextSpan(
+                    text:
+                        'Only basic attacks can critically strike, but Blastoise has 0% base Critical-Hit rate at all levels.',
+                    style: TextStyle(
+                      fontFamily: 'HelveticaNeueLTProLight',
+                      fontSize: 15,
+                      color: ColorConstants.gray,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
           const PercentStatusInfo(
             title: 'Offense',

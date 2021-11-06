@@ -1,10 +1,20 @@
+import 'package:db_unite/src/constants/color_constants.dart';
+import 'package:db_unite/src/controllers/loading_data_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class FilterPokemon extends StatelessWidget {
-  const FilterPokemon({Key? key}) : super(key: key);
+  const FilterPokemon({
+    required this.filterIndex,
+    Key? key,
+  }) : super(key: key);
+
+  final int filterIndex;
 
   @override
   Widget build(BuildContext context) {
+    final LoadingDataController loadingDataController =
+        Get.put(LoadingDataController());
     final List<Widget> chips = [];
     final List<String> _options = [
       'All',
@@ -21,7 +31,7 @@ class FilterPokemon extends StatelessWidget {
 
     for (int index = 0; index < _options.length; index++) {
       final ChoiceChip choiceChip = ChoiceChip(
-        selected: _options[index] == 'All',
+        selected: index == filterIndex,
         label: Text(
           _options[index],
           style: const TextStyle(color: Colors.white),
@@ -29,8 +39,8 @@ class FilterPokemon extends StatelessWidget {
         elevation: 0,
         pressElevation: 5,
         backgroundColor: Colors.black54,
-        selectedColor: Colors.blue,
-        onSelected: (bool selected) {},
+        selectedColor: ColorConstants.background,
+        onSelected: (_) => loadingDataController.filterIndex.value = index,
       );
 
       chips.add(
