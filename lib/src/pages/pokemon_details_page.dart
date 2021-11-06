@@ -6,8 +6,8 @@ import 'package:db_unite/src/pages/tabs-pokemon-details/info_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PokemonDetails extends StatelessWidget {
-  const PokemonDetails({Key? key}) : super(key: key);
+class PokemonDetailsPage extends StatelessWidget {
+  const PokemonDetailsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
