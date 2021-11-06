@@ -10,4 +10,5 @@ class ColorConstants {
   static const Color physicalAttacker = Color(0xffff7f7f);
   static const Color yellow = Color(0xffffd283);
   static const Color orange = Color(0xffffa403);
+  static const Color gray = Color(0xffc0b5e0);
 }

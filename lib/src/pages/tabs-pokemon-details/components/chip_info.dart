@@ -21,9 +21,9 @@ class ChipInfo extends StatelessWidget {
           borderRadius: BorderRadius.circular(50),
         ),
         backgroundColor: Colors.transparent,
-        label: const Text(
-          'Ranged',
-          style: TextStyle(color: Colors.white),
+        label: Text(
+          text,
+          style: const TextStyle(color: Colors.white),
         ),
       ),
     );
