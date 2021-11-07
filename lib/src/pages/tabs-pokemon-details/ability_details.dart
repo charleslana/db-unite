@@ -17,6 +17,7 @@ class AbilityDetails extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
@@ -111,6 +112,54 @@ class AbilityDetails extends StatelessWidget {
                     ],
                   ),
                 ],
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                'Level 5',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: ColorConstants.deepYellow,
+                ),
+              ),
+              const Text(
+                'Blastoise shoots a large amount of water: damaging, stunning, and knocking back enemies hit.',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: ColorConstants.gray,
+                  fontFamily: 'HelveticaNeueLTProLight',
+                ),
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                'Damage - During Rapid Spin',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: ColorConstants.gray,
+                ),
+              ),
+              const Text(
+                'Blastoise unleashes a large burst of water in a radius around themselves, damaging, stunning, and knocking back enemies hit. Blastoise also gains a small movement speed bonus for the duration of this move.',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: ColorConstants.gray,
+                  fontFamily: 'HelveticaNeueLTProLight',
+                ),
+              ),
+              const Text(
+                '95% SpA + 16 x (Level - 1) + 620',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: ColorConstants.yellow,
+                ),
+              ),
+              const SizedBox(height: 10),
+              CachedNetworkImage(
+                placeholder: (_, __) => const PokeballLoading(),
+                imageUrl:
+                    'https://raw.githubusercontent.com/charleslana/api-pokemon-unite/master/pokemon/009/screenshot/Water_Gun.jpg',
+                fit: BoxFit.cover,
+                height: 150,
+                width: double.infinity,
               ),
             ],
           ),
