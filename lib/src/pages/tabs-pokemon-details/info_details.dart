@@ -13,6 +13,7 @@ class InfoDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      controller: ScrollController(),
       physics: const BouncingScrollPhysics(),
       child: Column(
         children: [

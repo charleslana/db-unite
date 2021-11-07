@@ -17,6 +17,7 @@ class AbilityDetails extends StatelessWidget {
     const String type = 'Ranged';
 
     return SingleChildScrollView(
+      controller: ScrollController(),
       physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
