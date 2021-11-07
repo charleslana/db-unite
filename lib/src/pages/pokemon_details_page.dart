@@ -66,7 +66,7 @@ class PokemonDetailsPage extends StatelessWidget {
                 const SizedBox(height: 20),
                 Expanded(
                   child: TabBarView(
-                    physics: const BouncingScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     controller: pokemonDetailsController.tabController,
                     children: const [
                       InfoDetails(),

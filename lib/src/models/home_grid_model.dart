@@ -5,7 +5,7 @@ class HomeGridModel {
     required this.route,
   });
 
-  String image;
-  String text;
-  String route;
+  final String image;
+  final String text;
+  final String route;
 }
