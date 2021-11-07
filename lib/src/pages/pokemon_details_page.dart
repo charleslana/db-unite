@@ -38,9 +38,9 @@ class PokemonDetailsPage extends StatelessWidget {
                     trackHeight: 8,
                   ),
                   child: Slider(
-                    value: loadingDataController.pokemonLevel.value,
-                    onChanged: (double value) =>
-                        loadingDataController.pokemonLevel.value = value,
+                    value: loadingDataController.pokemonLevel.value.toDouble(),
+                    onChanged: (double value) => loadingDataController
+                        .pokemonLevel.value = value.toInt(),
                     min: 1,
                     max: 15,
                   ),

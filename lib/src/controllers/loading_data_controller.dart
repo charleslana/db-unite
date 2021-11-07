@@ -12,7 +12,7 @@ class LoadingDataController extends GetxController {
   RxList<String> pokemonList = <String>[].obs;
   RxList<String> pokemonFilterList = <String>[].obs;
   RxInt pokemonIndex = 0.obs;
-  RxDouble pokemonLevel = 1.0.obs;
+  RxInt pokemonLevel = 1.obs;
   RxInt filterIndex = 0.obs;
 
   @override
