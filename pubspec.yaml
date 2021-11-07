@@ -27,6 +27,7 @@ flutter:
   assets:
     - assets/images/layout/
     - assets/images/grid/
+    - assets/images/skills/
   fonts:
     - family: HelveticaNeueLTProExtraBlack
       fonts:

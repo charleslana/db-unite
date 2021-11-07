@@ -2,6 +2,7 @@ import 'package:db_unite/src/components/custom_app_bar.dart';
 import 'package:db_unite/src/constants/color_constants.dart';
 import 'package:db_unite/src/controllers/loading_data_controller.dart';
 import 'package:db_unite/src/controllers/pokemon_details_controller.dart';
+import 'package:db_unite/src/pages/tabs-pokemon-details/ability_details.dart';
 import 'package:db_unite/src/pages/tabs-pokemon-details/info_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -69,7 +70,7 @@ class PokemonDetailsPage extends StatelessWidget {
                     controller: pokemonDetailsController.tabController,
                     children: const [
                       InfoDetails(),
-                      Center(child: Text('Habilidades')),
+                      AbilityDetails(),
                       Center(child: Text('Estatísticas')),
                       Center(child: Text('Builds')),
                     ],

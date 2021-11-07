@@ -42,7 +42,7 @@ class InfoDetails extends StatelessWidget {
                         child: Text(
                           'Special Attacker',
                           style: TextStyle(
-                            color: ColorConstants.specialAttacker,
+                            color: ColorConstants.blue,
                             fontSize: 15,
                           ),
                         ),

@@ -6,9 +6,10 @@ class ColorConstants {
   static const Color scaffold = Color(0xff312457);
   static const Color background = Color(0xff745bbb);
   static const Color text = Colors.white;
-  static const Color specialAttacker = Color(0xff2bd8ff);
-  static const Color physicalAttacker = Color(0xffff7f7f);
+  static const Color blue = Color(0xff2bd8ff);
+  static const Color red = Color(0xffff7f7f);
+  static const Color deepRed = Color(0xffff2d82);
   static const Color yellow = Color(0xffffd283);
-  static const Color orange = Color(0xffffa403);
+  static const Color deepYellow = Color(0xffffa403);
   static const Color gray = Color(0xffc0b5e0);
 }

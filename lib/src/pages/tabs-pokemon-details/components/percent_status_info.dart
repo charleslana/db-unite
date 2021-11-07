@@ -47,7 +47,7 @@ class PercentStatusInfo extends StatelessWidget {
             lineHeight: 8,
             percent: percent,
             backgroundColor: ColorConstants.background.withOpacity(0.4),
-            progressColor: ColorConstants.orange,
+            progressColor: ColorConstants.deepYellow,
           ),
         ),
       ],
