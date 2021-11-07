@@ -21,8 +21,9 @@ class CardAbility extends StatelessWidget {
     required this.description,
     required this.cooldownLevels,
     required this.cooldown,
-    required this.type,
-    required this.typeEnum,
+    this.type,
+    this.typeEnum,
+    this.typeColor,
     required this.damage,
     Key? key,
   }) : super(key: key);
@@ -35,8 +36,9 @@ class CardAbility extends StatelessWidget {
   final DescriptionAbilityModel description;
   final List<int> cooldownLevels;
   final List<double> cooldown;
-  final TypeAbilityModel type;
-  final TypeAbilityEnum typeEnum;
+  final TypeAbilityModel? type;
+  final TypeAbilityEnum? typeEnum;
+  final Color? typeColor;
   final List<DamageAbilityModel> damage;
 
   @override
@@ -49,50 +51,50 @@ class CardAbility extends StatelessWidget {
       color: ColorConstants.background.withOpacity(0.5),
       child: Padding(
         padding: const EdgeInsets.all(10),
-        child: Obx(() {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  CachedNetworkImage(
-                    placeholder: (_, __) => const PokeballLoading(),
-                    imageUrl: imageAbility,
-                    fit: BoxFit.fill,
-                    height: 50,
-                  ),
-                  const SizedBox(width: 10),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                CachedNetworkImage(
+                  placeholder: (_, __) => const PokeballLoading(),
+                  imageUrl: imageAbility,
+                  fit: BoxFit.fill,
+                  height: 50,
+                ),
+                const SizedBox(width: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      name,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        color: ColorConstants.text,
+                      ),
+                    ),
+                    if (title != null)
                       Text(
-                        name,
+                        title!.enUS,
                         style: const TextStyle(
-                          fontSize: 20,
-                          color: ColorConstants.text,
+                          fontSize: 16,
+                          color: ColorConstants.gray,
                         ),
                       ),
-                      if (title != null)
-                        Text(
-                          title!.enUS,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            color: ColorConstants.gray,
-                          ),
-                        ),
-                      if (cooldown.isNotEmpty)
-                        Wrap(
-                          spacing: 10,
-                          runSpacing: 10,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.black54,
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: RichText(
+                    if (cooldown.isNotEmpty)
+                      Wrap(
+                        spacing: 10,
+                        runSpacing: 10,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.black54,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Obx(() {
+                                return RichText(
                                   text: TextSpan(
                                     style: const TextStyle(
                                       fontSize: 14,
@@ -125,155 +127,155 @@ class CardAbility extends StatelessWidget {
                                       ],
                                     ],
                                   ),
-                                ),
-                              ),
+                                );
+                              }),
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.black54,
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: RichText(
-                                  text: TextSpan(
-                                    style: const TextStyle(
-                                      fontSize: 14,
-                                      color: ColorConstants.deepRed,
-                                    ),
-                                    children: [
-                                      if (typeEnum == TypeAbilityEnum.area) ...[
-                                        WidgetSpan(
-                                          child: Image.asset(
-                                            ImageConstants.skillArea,
-                                            width: 15,
-                                          ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.black54,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: RichText(
+                                text: TextSpan(
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: typeColor,
+                                  ),
+                                  children: [
+                                    if (typeEnum == TypeAbilityEnum.area) ...[
+                                      WidgetSpan(
+                                        child: Image.asset(
+                                          ImageConstants.skillArea,
+                                          width: 15,
                                         ),
-                                      ] else if (typeEnum ==
-                                          TypeAbilityEnum.dash) ...[
-                                        WidgetSpan(
-                                          child: Image.asset(
-                                            ImageConstants.skillDash,
-                                            width: 15,
-                                          ),
+                                      ),
+                                    ] else if (typeEnum ==
+                                        TypeAbilityEnum.dash) ...[
+                                      WidgetSpan(
+                                        child: Image.asset(
+                                          ImageConstants.skillDash,
+                                          width: 15,
                                         ),
-                                      ] else if (typeEnum ==
-                                          TypeAbilityEnum.melee) ...[
-                                        WidgetSpan(
-                                          child: Image.asset(
-                                            ImageConstants.skillMelee,
-                                            width: 15,
-                                          ),
+                                      ),
+                                    ] else if (typeEnum ==
+                                        TypeAbilityEnum.melee) ...[
+                                      WidgetSpan(
+                                        child: Image.asset(
+                                          ImageConstants.skillMelee,
+                                          width: 15,
                                         ),
-                                      ] else if (typeEnum ==
-                                          TypeAbilityEnum.ranged) ...[
-                                        WidgetSpan(
-                                          child: Image.asset(
-                                            ImageConstants.skillRanged,
-                                            width: 15,
-                                          ),
+                                      ),
+                                    ] else if (typeEnum ==
+                                        TypeAbilityEnum.ranged) ...[
+                                      WidgetSpan(
+                                        child: Image.asset(
+                                          ImageConstants.skillRanged,
+                                          width: 15,
                                         ),
-                                      ] else ...[
-                                        WidgetSpan(
-                                          child: Image.asset(
-                                            ImageConstants.skillSureHit,
-                                            width: 15,
-                                          ),
+                                      ),
+                                    ] else ...[
+                                      WidgetSpan(
+                                        child: Image.asset(
+                                          ImageConstants.skillSureHit,
+                                          width: 15,
                                         ),
-                                      ],
-                                      TextSpan(
-                                        text: ' ${type.enUS}',
                                       ),
                                     ],
-                                  ),
+                                    TextSpan(
+                                      text: ' ${type!.enUS}',
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
-                          ],
-                        ),
-                    ],
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              if (damage.isEmpty) ...[
-                Text(
-                  description.enUS[0],
-                  style: const TextStyle(
-                    fontSize: 16,
-                    color: ColorConstants.gray,
-                    fontFamily: 'HelveticaNeueLTProLight',
-                  ),
-                ),
-              ] else ...[
-                for (int index = 0; index < damage.length; index++)
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      if (damage[index].level != null)
-                        Text(
-                          'Level ${damage[index].level}',
-                          style: const TextStyle(
-                            fontSize: 16,
-                            color: ColorConstants.deepYellow,
                           ),
-                        ),
+                        ],
+                      ),
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            if (damage.isEmpty) ...[
+              Text(
+                description.enUS[0],
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: ColorConstants.gray,
+                  fontFamily: 'HelveticaNeueLTProLight',
+                ),
+              ),
+            ] else ...[
+              for (int index = 0; index < damage.length; index++)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (damage[index].level != null)
                       Text(
-                        description.enUS[index],
+                        'Level ${damage[index].level}',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: ColorConstants.deepYellow,
+                        ),
+                      ),
+                    Text(
+                      description.enUS[index],
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: ColorConstants.gray,
+                        fontFamily: 'HelveticaNeueLTProLight',
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      damage[index].name.enUS,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        color: ColorConstants.gray,
+                      ),
+                    ),
+                    if (damage[index].description != null)
+                      Text(
+                        damage[index].description!.enUS,
                         style: const TextStyle(
                           fontSize: 16,
                           color: ColorConstants.gray,
                           fontFamily: 'HelveticaNeueLTProLight',
                         ),
                       ),
-                      const SizedBox(height: 10),
-                      Text(
-                        damage[index].name.enUS,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          color: ColorConstants.gray,
-                        ),
+                    Text(
+                      'Formula: ${damage[index].formula}',
+                      style: const TextStyle(
+                        fontSize: 17,
+                        color: ColorConstants.yellow,
                       ),
-                      if (damage[index].description != null)
-                        Text(
-                          damage[index].description!.enUS,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            color: ColorConstants.gray,
-                            fontFamily: 'HelveticaNeueLTProLight',
-                          ),
-                        ),
-                      Text(
-                        'Formula: ${damage[index].formula}',
-                        style: const TextStyle(
-                          fontSize: 17,
-                          color: ColorConstants.yellow,
-                        ),
+                    ),
+                    Text(
+                      'Value: ${damage[index].value}',
+                      style: const TextStyle(
+                        fontSize: 18,
+                        color: ColorConstants.red,
                       ),
-                      Text(
-                        'Value: ${damage[index].value}',
-                        style: const TextStyle(
-                          fontSize: 18,
-                          color: ColorConstants.red,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                    ],
-                  ),
-              ],
-              if (imageScreenshot != null) ...[
-                const SizedBox(height: 10),
-                CachedNetworkImage(
-                  placeholder: (_, __) => const PokeballLoading(),
-                  imageUrl: imageScreenshot!,
-                  fit: BoxFit.cover,
-                  height: 150,
-                  width: double.infinity,
+                    ),
+                    const SizedBox(height: 10),
+                  ],
                 ),
-              ],
             ],
-          );
-        }),
+            if (imageScreenshot != null) ...[
+              const SizedBox(height: 10),
+              CachedNetworkImage(
+                placeholder: (_, __) => const PokeballLoading(),
+                imageUrl: imageScreenshot!,
+                fit: BoxFit.cover,
+                height: 150,
+                width: double.infinity,
+              ),
+            ],
+          ],
+        ),
       ),
     );
   }

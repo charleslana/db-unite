@@ -18,11 +18,35 @@ class PokemonDetailsPage extends StatelessWidget {
         Get.put(PokemonDetailsController());
 
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: ColorConstants.scaffold,
-        appBar: const CustomAppBar(title: 'Absol (#359)'),
-        body: Obx(() {
-          return Padding(
+      child: Obx(() {
+        return Scaffold(
+          backgroundColor: ColorConstants.scaffold,
+          appBar: CustomAppBar(
+            title: 'Absol (#${loadingDataController.pokemonIndex.value})',
+            widgets: [
+              Visibility(
+                maintainSize: true,
+                maintainAnimation: true,
+                maintainState: true,
+                visible: loadingDataController.pokemonIndex.value > 0,
+                child: IconButton(
+                  onPressed: () => loadingDataController.pokemonIndex.value--,
+                  icon: const Icon(Icons.chevron_left),
+                ),
+              ),
+              Visibility(
+                maintainSize: true,
+                maintainAnimation: true,
+                maintainState: true,
+                visible: loadingDataController.pokemonIndex.value < 25,
+                child: IconButton(
+                  onPressed: () => loadingDataController.pokemonIndex.value++,
+                  icon: const Icon(Icons.chevron_right),
+                ),
+              ),
+            ],
+          ),
+          body: Padding(
             padding: const EdgeInsets.all(12),
             child: Column(
               children: [
@@ -78,9 +102,9 @@ class PokemonDetailsPage extends StatelessWidget {
                 ),
               ],
             ),
-          );
-        }),
-      ),
+          ),
+        );
+      }),
     );
   }
 }

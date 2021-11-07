@@ -5,10 +5,12 @@ import 'package:get/get.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     required this.title,
+    this.widgets,
     Key? key,
   }) : super(key: key);
 
   final String title;
+  final List<Widget>? widgets;
 
   @override
   Size get preferredSize => const Size.fromHeight(56);
@@ -23,6 +25,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(title),
       centerTitle: true,
       backgroundColor: ColorConstants.appBarBackground,
+      actions: widgets,
     );
   }
 }
