@@ -84,14 +84,14 @@ class AbilityDetails extends StatelessWidget {
                             ? TypeAbilityEnum.ranged
                             : TypeAbilityEnum.sureHit,
             typeColor: type == 'Area'
-                ? ColorConstants.red
+                ? ColorConstants.deepRed
                 : type == 'Dash'
                     ? ColorConstants.blue
                     : type == 'Melee'
-                        ? ColorConstants.red
+                        ? ColorConstants.deepRed
                         : type == 'Ranged'
-                            ? ColorConstants.red
-                            : ColorConstants.red,
+                            ? ColorConstants.deepRed
+                            : ColorConstants.deepRed,
             damage: [
               DamageAbilityModel(
                 name: TranslationDamage(
