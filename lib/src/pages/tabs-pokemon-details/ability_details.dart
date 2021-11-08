@@ -1,4 +1,5 @@
 import 'package:db_unite/src/constants/color_constants.dart';
+import 'package:db_unite/src/controllers/pokemon_details_controller.dart';
 import 'package:db_unite/src/pages/tabs-pokemon-details/components/card_ability.dart';
 import 'package:db_unite/src/pages/tabs-pokemon-details/enum/type_ability_enum.dart';
 import 'package:db_unite/src/pages/tabs-pokemon-details/models/damage_ability_model.dart';
@@ -6,16 +7,19 @@ import 'package:db_unite/src/pages/tabs-pokemon-details/models/description_abili
 import 'package:db_unite/src/pages/tabs-pokemon-details/models/title_ability_model.dart';
 import 'package:db_unite/src/pages/tabs-pokemon-details/models/type_ability_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AbilityDetails extends StatelessWidget {
   const AbilityDetails({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final PokemonDetailsController pokemonDetailsController =
+        Get.put(PokemonDetailsController());
     const String type = 'Ranged';
 
     return SingleChildScrollView(
-      controller: ScrollController(),
+      controller: pokemonDetailsController.scrollControllerAbility,
       physics: const BouncingScrollPhysics(),
       child: Column(
         children: [

@@ -30,7 +30,14 @@ class PokemonDetailsPage extends StatelessWidget {
                 maintainState: true,
                 visible: loadingDataController.pokemonIndex.value > 0,
                 child: IconButton(
-                  onPressed: () => loadingDataController.pokemonIndex.value--,
+                  onPressed: () {
+                    loadingDataController.pokemonIndex.value--;
+                    loadingDataController.pokemonLevel.value = 1;
+                    pokemonDetailsController
+                      ..tabController.animateTo(0)
+                      ..scrollToUp(
+                          pokemonDetailsController.scrollControllerInfo);
+                  },
                   icon: const Icon(Icons.chevron_left),
                 ),
               ),
@@ -40,7 +47,14 @@ class PokemonDetailsPage extends StatelessWidget {
                 maintainState: true,
                 visible: loadingDataController.pokemonIndex.value < 25,
                 child: IconButton(
-                  onPressed: () => loadingDataController.pokemonIndex.value++,
+                  onPressed: () {
+                    loadingDataController.pokemonIndex.value++;
+                    loadingDataController.pokemonLevel.value = 1;
+                    pokemonDetailsController
+                      ..tabController.animateTo(0)
+                      ..scrollToUp(
+                          pokemonDetailsController.scrollControllerInfo);
+                  },
                   icon: const Icon(Icons.chevron_right),
                 ),
               ),

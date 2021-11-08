@@ -1,19 +1,24 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:db_unite/src/components/pokeball_loading.dart';
 import 'package:db_unite/src/constants/color_constants.dart';
+import 'package:db_unite/src/controllers/pokemon_details_controller.dart';
 import 'package:db_unite/src/pages/tabs-pokemon-details/components/card_info.dart';
 import 'package:db_unite/src/pages/tabs-pokemon-details/components/chip_info.dart';
 import 'package:db_unite/src/pages/tabs-pokemon-details/components/evolution_info.dart';
 import 'package:db_unite/src/pages/tabs-pokemon-details/components/percent_status_info.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class InfoDetails extends StatelessWidget {
   const InfoDetails({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final PokemonDetailsController pokemonDetailsController =
+        Get.put(PokemonDetailsController());
+
     return SingleChildScrollView(
-      controller: ScrollController(),
+      controller: pokemonDetailsController.scrollControllerInfo,
       physics: const BouncingScrollPhysics(),
       child: Column(
         children: [

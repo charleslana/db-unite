@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 class PokemonDetailsController extends GetxController
     with SingleGetTickerProviderMixin {
   late TabController tabController;
+  final ScrollController scrollControllerInfo = ScrollController();
+  final ScrollController scrollControllerAbility = ScrollController();
 
   @override
   void onInit() {
@@ -11,6 +13,26 @@ class PokemonDetailsController extends GetxController
       length: 4,
       vsync: this,
     );
+    tabController.addListener(_handleTabSelection);
     super.onInit();
+  }
+
+  void _handleTabSelection() {
+    if (tabController.indexIsChanging) {
+      switch (tabController.index) {
+        case 0:
+          scrollToUp(scrollControllerInfo);
+          break;
+        case 1:
+          scrollToUp(scrollControllerAbility);
+          break;
+      }
+    }
+  }
+
+  void scrollToUp(ScrollController scrollController) {
+    if (scrollController.hasClients) {
+      scrollController.jumpTo(0);
+    }
   }
 }
