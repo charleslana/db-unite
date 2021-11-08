@@ -113,17 +113,17 @@ class CardAbility extends StatelessWidget {
                                           cooldownLevels[2]) ...[
                                         TextSpan(
                                             text:
-                                                '${cooldown[2].toString()} s'),
+                                                ' ${cooldown[2].toString()}s'),
                                       ] else if (loadingDataController
                                               .pokemonLevel.value >=
                                           cooldownLevels[1]) ...[
                                         TextSpan(
                                             text:
-                                                '${cooldown[1].toString()} s'),
+                                                ' ${cooldown[1].toString()}s'),
                                       ] else ...[
                                         TextSpan(
                                             text:
-                                                '${cooldown[0].toString()} s'),
+                                                ' ${cooldown[0].toString()}s'),
                                       ],
                                     ],
                                   ),
