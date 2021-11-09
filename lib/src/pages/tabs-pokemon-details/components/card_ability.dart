@@ -11,12 +11,12 @@ import 'package:get/get.dart';
 class CardAbility extends StatelessWidget {
   const CardAbility({
     required this.ability,
-    required this.upgradeChoices,
+    this.upgradeChoices,
     Key? key,
   }) : super(key: key);
 
   final AbilityModel ability;
-  final List<AbilityModel> upgradeChoices;
+  final List<AbilityModel>? upgradeChoices;
 
   @override
   Widget build(BuildContext context) {
@@ -115,20 +115,22 @@ class CardAbility extends StatelessWidget {
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(10),
-                              child: RichText(
-                                text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: _colorType(ability.typeEnum!),
-                                  ),
-                                  children: [
-                                    _imageType(ability.typeEnum!),
-                                    TextSpan(
-                                      text: ' ${ability.type!.enUS}',
-                                    ),
-                                  ],
-                                ),
-                              ),
+                              child: ability.typeEnum != null
+                                  ? RichText(
+                                      text: TextSpan(
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          color: _colorType(ability.typeEnum!),
+                                        ),
+                                        children: [
+                                          _imageType(ability.typeEnum!),
+                                          TextSpan(
+                                            text: ' ${ability.type!.enUS}',
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  : null,
                             ),
                           ),
                         ],
@@ -169,13 +171,14 @@ class CardAbility extends StatelessWidget {
                       ),
                     ),
                   const SizedBox(height: 10),
-                  Text(
-                    effectLevel.name!.enUS,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      color: ColorConstants.gray,
+                  if (effectLevel.name != null)
+                    Text(
+                      effectLevel.name!.enUS,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        color: ColorConstants.gray,
+                      ),
                     ),
-                  ),
                   if (effectLevel.description != null)
                     Text(
                       effectLevel.description!.enUS,
@@ -185,20 +188,22 @@ class CardAbility extends StatelessWidget {
                         fontFamily: 'HelveticaNeueLTProLight',
                       ),
                     ),
-                  Text(
-                    'Formula: ${effectLevel.formula}',
-                    style: const TextStyle(
-                      fontSize: 17,
-                      color: ColorConstants.yellow,
+                  if (effectLevel.formula != null)
+                    Text(
+                      'Formula: ${effectLevel.formula}',
+                      style: const TextStyle(
+                        fontSize: 17,
+                        color: ColorConstants.yellow,
+                      ),
                     ),
-                  ),
-                  Text(
-                    'Value: ${effectLevel.value}',
-                    style: const TextStyle(
-                      fontSize: 18,
-                      color: ColorConstants.red,
+                  if (effectLevel.value != null)
+                    Text(
+                      'Value: ${effectLevel.value}',
+                      style: const TextStyle(
+                        fontSize: 18,
+                        color: ColorConstants.red,
+                      ),
                     ),
-                  ),
                   const SizedBox(height: 10),
                 ],
               ),
@@ -212,30 +217,31 @@ class CardAbility extends StatelessWidget {
                 width: double.infinity,
               ),
             ],
-            if (upgradeChoices.isEmpty)
-              Column(
-                children: [
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      const Expanded(
-                          child: Divider(color: ColorConstants.yellow)),
-                      const SizedBox(width: 10),
-                      Text(
-                        '${ability.name} Upgrade Choices',
-                        style: const TextStyle(
-                          fontSize: 20,
-                          color: ColorConstants.gray,
+            if (upgradeChoices != null)
+              if (upgradeChoices!.isEmpty)
+                Column(
+                  children: [
+                    const SizedBox(height: 10),
+                    Row(
+                      children: [
+                        const Expanded(
+                            child: Divider(color: ColorConstants.yellow)),
+                        const SizedBox(width: 10),
+                        Text(
+                          '${ability.name} Upgrade Choices',
+                          style: const TextStyle(
+                            fontSize: 20,
+                            color: ColorConstants.gray,
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 10),
-                      const Expanded(
-                          child: Divider(color: ColorConstants.yellow)),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                ],
-              ),
+                        const SizedBox(width: 10),
+                        const Expanded(
+                            child: Divider(color: ColorConstants.yellow)),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                  ],
+                ),
           ],
         ),
       ),

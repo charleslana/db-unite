@@ -11,9 +11,9 @@ class AbilityModel {
     required this.cooldownLevels,
     required this.cooldown,
     this.type,
+    this.typeEnum,
     this.description,
     required this.levels,
-    this.typeEnum,
     required this.effectLevels,
   });
 
@@ -24,8 +24,8 @@ class AbilityModel {
   final List<int> cooldownLevels;
   final List<double> cooldown;
   final TranslationModel? type;
+  final TypeAbilityEnum? typeEnum;
   final TranslationModel? description;
   final List<int> levels;
-  final TypeAbilityEnum? typeEnum;
   final List<EffectLevelsAbilityModel> effectLevels;
 }
