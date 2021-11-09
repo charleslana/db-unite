@@ -83,7 +83,68 @@ class AbilityDetails extends StatelessWidget {
                 ),
               ],
             ),
-            upgradeChoices: const [],
+            upgradeChoices: [
+              AbilityModel(
+                name: 'Super Luck',
+                imageAbility:
+                    'https://raw.githubusercontent.com/charleslana/api-pokemon-unite/master/pokemon/359/ability/Super_Luck.png',
+                title: TranslationModel(
+                  enUS: 'Passive Ability',
+                  ptBR: 'Habilidade passiva',
+                ),
+                cooldownLevels: [],
+                cooldown: [],
+                description: TranslationModel(
+                  enUS: 'Increases Critical-Hit rate by 15%.',
+                  ptBR: 'Aumenta a taxa de acertos críticos em 15%.',
+                ),
+                levels: [],
+                effectLevels: [],
+              ),
+              AbilityModel(
+                name: 'Feint',
+                imageAbility:
+                    'https://raw.githubusercontent.com/charleslana/api-pokemon-unite/master/pokemon/359/ability/Feint.png',
+                imageScreenshot:
+                    'https://raw.githubusercontent.com/charleslana/api-pokemon-unite/master/pokemon/359/screenshot/Feint.jpg',
+                title: TranslationModel(
+                  enUS: 'Move 1',
+                  ptBR: 'Move 1',
+                ),
+                cooldownLevels: [
+                  1,
+                  5,
+                  9,
+                ],
+                cooldown: [
+                  8.0,
+                  7.2,
+                  6.4,
+                ],
+                type: TranslationModel(
+                  enUS: 'Dash',
+                  ptBR: 'Dash',
+                ),
+                typeEnum: TypeAbilityEnum.dash,
+                description: TranslationModel(
+                  enUS:
+                      'Absol dashes in an arc, damaging all enemies hit. Absol deals damage as if enemies hit have 0 defense and bypasses shields.',
+                  ptBR:
+                      'Absol avança em um arco, causando dano a todos os inimigos atingidos. Absol causa dano como se os inimigos atingidos tivessem 0 de defesa e contornasse os escudos.',
+                ),
+                levels: [],
+                effectLevels: [
+                  EffectLevelsAbilityModel(
+                    name: TranslationModel(
+                      enUS: 'Damage',
+                      ptBR: 'Dano',
+                    ),
+                    value: 242,
+                    formula: '66% Atk + 7 x (Level - 1) + 130',
+                  ),
+                ],
+              ),
+            ],
           ),
         ],
       ),

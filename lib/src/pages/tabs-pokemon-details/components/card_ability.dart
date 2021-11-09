@@ -20,205 +20,16 @@ class CardAbility extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final LoadingDataController loadingDataController =
-        Get.put(LoadingDataController());
-
     return Card(
       elevation: 0,
       color: ColorConstants.background.withOpacity(0.5),
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                CachedNetworkImage(
-                  placeholder: (_, __) => const PokeballLoading(),
-                  imageUrl: ability.imageAbility,
-                  fit: BoxFit.fill,
-                  height: 50,
-                ),
-                const SizedBox(width: 10),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      ability.name,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: ColorConstants.text,
-                      ),
-                    ),
-                    if (ability.title != null)
-                      Text(
-                        ability.title!.enUS,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          color: ColorConstants.gray,
-                        ),
-                      ),
-                    if (ability.cooldown.isNotEmpty)
-                      Wrap(
-                        spacing: 10,
-                        runSpacing: 10,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.black54,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Obx(() {
-                                return RichText(
-                                  text: TextSpan(
-                                    style: const TextStyle(
-                                      fontSize: 14,
-                                      color: ColorConstants.yellow,
-                                    ),
-                                    children: [
-                                      const WidgetSpan(
-                                        child: Icon(
-                                          Icons.timelapse,
-                                          size: 15,
-                                          color: ColorConstants.yellow,
-                                        ),
-                                      ),
-                                      if (loadingDataController
-                                              .pokemonLevel.value >=
-                                          ability.cooldownLevels[2]) ...[
-                                        TextSpan(
-                                            text:
-                                                ' ${ability.cooldown[2].toString()}s'),
-                                      ] else if (loadingDataController
-                                              .pokemonLevel.value >=
-                                          ability.cooldownLevels[1]) ...[
-                                        TextSpan(
-                                            text:
-                                                ' ${ability.cooldown[1].toString()}s'),
-                                      ] else ...[
-                                        TextSpan(
-                                            text:
-                                                ' ${ability.cooldown[0].toString()}s'),
-                                      ],
-                                    ],
-                                  ),
-                                );
-                              }),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.black54,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: ability.typeEnum != null
-                                  ? RichText(
-                                      text: TextSpan(
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          color: _colorType(ability.typeEnum!),
-                                        ),
-                                        children: [
-                                          _imageType(ability.typeEnum!),
-                                          TextSpan(
-                                            text: ' ${ability.type!.enUS}',
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  : null,
-                            ),
-                          ),
-                        ],
-                      ),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(height: 10),
-            if (ability.description != null)
-              Text(
-                ability.description!.enUS,
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: ColorConstants.gray,
-                  fontFamily: 'HelveticaNeueLTProLight',
-                ),
-              ),
-            for (var effectLevel in ability.effectLevels)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (effectLevel.level != null)
-                    Text(
-                      'Level ${effectLevel.level}',
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: ColorConstants.deepYellow,
-                      ),
-                    ),
-                  if (effectLevel.descriptionLevel != null)
-                    Text(
-                      effectLevel.descriptionLevel!.enUS,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: ColorConstants.gray,
-                        fontFamily: 'HelveticaNeueLTProLight',
-                      ),
-                    ),
-                  const SizedBox(height: 10),
-                  if (effectLevel.name != null)
-                    Text(
-                      effectLevel.name!.enUS,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        color: ColorConstants.gray,
-                      ),
-                    ),
-                  if (effectLevel.description != null)
-                    Text(
-                      effectLevel.description!.enUS,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: ColorConstants.gray,
-                        fontFamily: 'HelveticaNeueLTProLight',
-                      ),
-                    ),
-                  if (effectLevel.formula != null)
-                    Text(
-                      'Formula: ${effectLevel.formula}',
-                      style: const TextStyle(
-                        fontSize: 17,
-                        color: ColorConstants.yellow,
-                      ),
-                    ),
-                  if (effectLevel.value != null)
-                    Text(
-                      'Value: ${effectLevel.value}',
-                      style: const TextStyle(
-                        fontSize: 18,
-                        color: ColorConstants.red,
-                      ),
-                    ),
-                  const SizedBox(height: 10),
-                ],
-              ),
-            if (ability.imageScreenshot != null) ...[
-              const SizedBox(height: 10),
-              CachedNetworkImage(
-                placeholder: (_, __) => const PokeballLoading(),
-                imageUrl: ability.imageScreenshot!,
-                fit: BoxFit.cover,
-                height: 150,
-                width: double.infinity,
-              ),
-            ],
+            _defaultAbility(ability),
             if (upgradeChoices != null)
-              if (upgradeChoices!.isEmpty)
+              if (upgradeChoices!.isNotEmpty)
                 Column(
                   children: [
                     const SizedBox(height: 10),
@@ -240,11 +51,236 @@ class CardAbility extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 10),
+                    IntrinsicHeight(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          for (int index = 0;
+                              index < upgradeChoices!.length;
+                              index++) ...[
+                            if (index > 0)
+                              const VerticalDivider(
+                                  color: ColorConstants.yellow),
+                            Expanded(
+                                child: _defaultAbility(upgradeChoices![index])),
+                          ],
+                        ],
+                      ),
+                    ),
                   ],
                 ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _defaultAbility(AbilityModel ability) {
+    final LoadingDataController loadingDataController =
+        Get.put(LoadingDataController());
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Flexible(
+              child: CachedNetworkImage(
+                placeholder: (_, __) => const PokeballLoading(),
+                imageUrl: ability.imageAbility,
+                fit: BoxFit.scaleDown,
+                height: 50,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Flexible(
+              flex: 2,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      ability.name,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        color: ColorConstants.text,
+                      ),
+                    ),
+                  ),
+                  if (ability.title != null)
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        ability.title!.enUS,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: ColorConstants.gray,
+                        ),
+                      ),
+                    ),
+                  if (ability.cooldown.isNotEmpty)
+                    Wrap(
+                      spacing: 10,
+                      runSpacing: 10,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.black54,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Obx(() {
+                              return RichText(
+                                text: TextSpan(
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    color: ColorConstants.yellow,
+                                  ),
+                                  children: [
+                                    const WidgetSpan(
+                                      child: Icon(
+                                        Icons.timelapse,
+                                        size: 15,
+                                        color: ColorConstants.yellow,
+                                      ),
+                                    ),
+                                    if (loadingDataController
+                                            .pokemonLevel.value >=
+                                        ability.cooldownLevels[2]) ...[
+                                      TextSpan(
+                                          text:
+                                              ' ${ability.cooldown[2].toString()}s'),
+                                    ] else if (loadingDataController
+                                            .pokemonLevel.value >=
+                                        ability.cooldownLevels[1]) ...[
+                                      TextSpan(
+                                          text:
+                                              ' ${ability.cooldown[1].toString()}s'),
+                                    ] else ...[
+                                      TextSpan(
+                                          text:
+                                              ' ${ability.cooldown[0].toString()}s'),
+                                    ],
+                                  ],
+                                ),
+                              );
+                            }),
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.black54,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: ability.typeEnum != null
+                                ? RichText(
+                                    text: TextSpan(
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: _colorType(ability.typeEnum!),
+                                      ),
+                                      children: [
+                                        _imageType(ability.typeEnum!),
+                                        TextSpan(
+                                          text: ' ${ability.type!.enUS}',
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                : null,
+                          ),
+                        ),
+                      ],
+                    ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        if (ability.description != null)
+          Text(
+            ability.description!.enUS,
+            style: const TextStyle(
+              fontSize: 16,
+              color: ColorConstants.gray,
+              fontFamily: 'HelveticaNeueLTProLight',
+            ),
+          ),
+        for (var effectLevel in ability.effectLevels)
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (effectLevel.level != null)
+                Text(
+                  'Level ${effectLevel.level}',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: ColorConstants.deepYellow,
+                  ),
+                ),
+              if (effectLevel.descriptionLevel != null)
+                Text(
+                  effectLevel.descriptionLevel!.enUS,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: ColorConstants.gray,
+                    fontFamily: 'HelveticaNeueLTProLight',
+                  ),
+                ),
+              const SizedBox(height: 10),
+              if (effectLevel.name != null)
+                Text(
+                  effectLevel.name!.enUS,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: ColorConstants.gray,
+                  ),
+                ),
+              if (effectLevel.description != null)
+                Text(
+                  effectLevel.description!.enUS,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: ColorConstants.gray,
+                    fontFamily: 'HelveticaNeueLTProLight',
+                  ),
+                ),
+              if (effectLevel.formula != null)
+                Text(
+                  'Formula: ${effectLevel.formula}',
+                  style: const TextStyle(
+                    fontSize: 17,
+                    color: ColorConstants.yellow,
+                  ),
+                ),
+              if (effectLevel.value != null)
+                Text(
+                  'Value: ${effectLevel.value}',
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: ColorConstants.red,
+                  ),
+                ),
+              const SizedBox(height: 10),
+            ],
+          ),
+        if (ability.imageScreenshot != null) ...[
+          const SizedBox(height: 10),
+          CachedNetworkImage(
+            placeholder: (_, __) => const PokeballLoading(),
+            imageUrl: ability.imageScreenshot!,
+            fit: BoxFit.cover,
+            height: 150,
+            width: double.infinity,
+          ),
+        ],
+      ],
     );
   }
 
