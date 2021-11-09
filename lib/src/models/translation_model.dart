@@ -1,5 +1,5 @@
-class TitleAbilityModel {
-  TitleAbilityModel({
+class TranslationModel {
+  TranslationModel({
     required this.enUS,
     required this.ptBR,
   });

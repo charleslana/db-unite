@@ -4,42 +4,19 @@ import 'package:db_unite/src/constants/color_constants.dart';
 import 'package:db_unite/src/constants/image_constants.dart';
 import 'package:db_unite/src/controllers/loading_data_controller.dart';
 import 'package:db_unite/src/pages/tabs-pokemon-details/enum/type_ability_enum.dart';
-import 'package:db_unite/src/pages/tabs-pokemon-details/models/damage_ability_model.dart';
-import 'package:db_unite/src/pages/tabs-pokemon-details/models/description_ability_model.dart';
-import 'package:db_unite/src/pages/tabs-pokemon-details/models/title_ability_model.dart';
-import 'package:db_unite/src/pages/tabs-pokemon-details/models/type_ability_model.dart';
+import 'package:db_unite/src/pages/tabs-pokemon-details/models/ability_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CardAbility extends StatelessWidget {
   const CardAbility({
-    required this.name,
-    required this.imageAbility,
-    this.imageScreenshot,
-    this.title,
-    required this.levels,
-    required this.description,
-    required this.cooldownLevels,
-    required this.cooldown,
-    this.type,
-    this.typeEnum,
-    this.typeColor,
-    required this.damage,
+    required this.ability,
+    required this.upgradeChoices,
     Key? key,
   }) : super(key: key);
 
-  final String name;
-  final String imageAbility;
-  final String? imageScreenshot;
-  final TitleAbilityModel? title;
-  final List<int> levels;
-  final DescriptionAbilityModel description;
-  final List<int> cooldownLevels;
-  final List<double> cooldown;
-  final TypeAbilityModel? type;
-  final TypeAbilityEnum? typeEnum;
-  final Color? typeColor;
-  final List<DamageAbilityModel> damage;
+  final AbilityModel ability;
+  final List<AbilityModel> upgradeChoices;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +35,7 @@ class CardAbility extends StatelessWidget {
               children: [
                 CachedNetworkImage(
                   placeholder: (_, __) => const PokeballLoading(),
-                  imageUrl: imageAbility,
+                  imageUrl: ability.imageAbility,
                   fit: BoxFit.fill,
                   height: 50,
                 ),
@@ -67,21 +44,21 @@ class CardAbility extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      name,
+                      ability.name,
                       style: const TextStyle(
                         fontSize: 20,
                         color: ColorConstants.text,
                       ),
                     ),
-                    if (title != null)
+                    if (ability.title != null)
                       Text(
-                        title!.enUS,
+                        ability.title!.enUS,
                         style: const TextStyle(
                           fontSize: 16,
                           color: ColorConstants.gray,
                         ),
                       ),
-                    if (cooldown.isNotEmpty)
+                    if (ability.cooldown.isNotEmpty)
                       Wrap(
                         spacing: 10,
                         runSpacing: 10,
@@ -110,20 +87,20 @@ class CardAbility extends StatelessWidget {
                                       ),
                                       if (loadingDataController
                                               .pokemonLevel.value >=
-                                          cooldownLevels[2]) ...[
+                                          ability.cooldownLevels[2]) ...[
                                         TextSpan(
                                             text:
-                                                ' ${cooldown[2].toString()}s'),
+                                                ' ${ability.cooldown[2].toString()}s'),
                                       ] else if (loadingDataController
                                               .pokemonLevel.value >=
-                                          cooldownLevels[1]) ...[
+                                          ability.cooldownLevels[1]) ...[
                                         TextSpan(
                                             text:
-                                                ' ${cooldown[1].toString()}s'),
+                                                ' ${ability.cooldown[1].toString()}s'),
                                       ] else ...[
                                         TextSpan(
                                             text:
-                                                ' ${cooldown[0].toString()}s'),
+                                                ' ${ability.cooldown[0].toString()}s'),
                                       ],
                                     ],
                                   ),
@@ -142,50 +119,12 @@ class CardAbility extends StatelessWidget {
                                 text: TextSpan(
                                   style: TextStyle(
                                     fontSize: 14,
-                                    color: typeColor,
+                                    color: _colorType(ability.typeEnum!),
                                   ),
                                   children: [
-                                    if (typeEnum == TypeAbilityEnum.area) ...[
-                                      WidgetSpan(
-                                        child: Image.asset(
-                                          ImageConstants.skillArea,
-                                          width: 15,
-                                        ),
-                                      ),
-                                    ] else if (typeEnum ==
-                                        TypeAbilityEnum.dash) ...[
-                                      WidgetSpan(
-                                        child: Image.asset(
-                                          ImageConstants.skillDash,
-                                          width: 15,
-                                        ),
-                                      ),
-                                    ] else if (typeEnum ==
-                                        TypeAbilityEnum.melee) ...[
-                                      WidgetSpan(
-                                        child: Image.asset(
-                                          ImageConstants.skillMelee,
-                                          width: 15,
-                                        ),
-                                      ),
-                                    ] else if (typeEnum ==
-                                        TypeAbilityEnum.ranged) ...[
-                                      WidgetSpan(
-                                        child: Image.asset(
-                                          ImageConstants.skillRanged,
-                                          width: 15,
-                                        ),
-                                      ),
-                                    ] else ...[
-                                      WidgetSpan(
-                                        child: Image.asset(
-                                          ImageConstants.skillSureHit,
-                                          width: 15,
-                                        ),
-                                      ),
-                                    ],
+                                    _imageType(ability.typeEnum!),
                                     TextSpan(
-                                      text: ' ${type!.enUS}',
+                                      text: ' ${ability.type!.enUS}',
                                     ),
                                   ],
                                 ),
@@ -199,84 +138,220 @@ class CardAbility extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
-            if (damage.isEmpty) ...[
+            if (ability.description != null)
               Text(
-                description.enUS[0],
+                ability.description!.enUS,
                 style: const TextStyle(
                   fontSize: 16,
                   color: ColorConstants.gray,
                   fontFamily: 'HelveticaNeueLTProLight',
                 ),
               ),
-            ] else ...[
-              for (int index = 0; index < damage.length; index++)
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (damage[index].level != null)
-                      Text(
-                        'Level ${damage[index].level}',
-                        style: const TextStyle(
-                          fontSize: 16,
-                          color: ColorConstants.deepYellow,
-                        ),
-                      ),
+            for (var effectLevel in ability.effectLevels)
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (effectLevel.level != null)
                     Text(
-                      description.enUS[index],
+                      'Level ${effectLevel.level}',
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: ColorConstants.deepYellow,
+                      ),
+                    ),
+                  if (effectLevel.descriptionLevel != null)
+                    Text(
+                      effectLevel.descriptionLevel!.enUS,
                       style: const TextStyle(
                         fontSize: 16,
                         color: ColorConstants.gray,
                         fontFamily: 'HelveticaNeueLTProLight',
                       ),
                     ),
-                    const SizedBox(height: 10),
+                  const SizedBox(height: 10),
+                  Text(
+                    effectLevel.name!.enUS,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      color: ColorConstants.gray,
+                    ),
+                  ),
+                  if (effectLevel.description != null)
                     Text(
-                      damage[index].name.enUS,
+                      effectLevel.description!.enUS,
                       style: const TextStyle(
-                        fontSize: 18,
+                        fontSize: 16,
                         color: ColorConstants.gray,
+                        fontFamily: 'HelveticaNeueLTProLight',
                       ),
                     ),
-                    if (damage[index].description != null)
-                      Text(
-                        damage[index].description!.enUS,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          color: ColorConstants.gray,
-                          fontFamily: 'HelveticaNeueLTProLight',
-                        ),
-                      ),
-                    Text(
-                      'Formula: ${damage[index].formula}',
-                      style: const TextStyle(
-                        fontSize: 17,
-                        color: ColorConstants.yellow,
-                      ),
+                  Text(
+                    'Formula: ${effectLevel.formula}',
+                    style: const TextStyle(
+                      fontSize: 17,
+                      color: ColorConstants.yellow,
                     ),
-                    Text(
-                      'Value: ${damage[index].value}',
-                      style: const TextStyle(
-                        fontSize: 18,
-                        color: ColorConstants.red,
-                      ),
+                  ),
+                  Text(
+                    'Value: ${effectLevel.value}',
+                    style: const TextStyle(
+                      fontSize: 18,
+                      color: ColorConstants.red,
                     ),
-                    const SizedBox(height: 10),
-                  ],
-                ),
-            ],
-            if (imageScreenshot != null) ...[
+                  ),
+                  const SizedBox(height: 10),
+                ],
+              ),
+            if (ability.imageScreenshot != null) ...[
               const SizedBox(height: 10),
               CachedNetworkImage(
                 placeholder: (_, __) => const PokeballLoading(),
-                imageUrl: imageScreenshot!,
+                imageUrl: ability.imageScreenshot!,
                 fit: BoxFit.cover,
                 height: 150,
                 width: double.infinity,
               ),
             ],
+            if (upgradeChoices.isEmpty)
+              Column(
+                children: [
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      const Expanded(
+                          child: Divider(color: ColorConstants.yellow)),
+                      const SizedBox(width: 10),
+                      Text(
+                        '${ability.name} Upgrade Choices',
+                        style: const TextStyle(
+                          fontSize: 20,
+                          color: ColorConstants.gray,
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      const Expanded(
+                          child: Divider(color: ColorConstants.yellow)),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                ],
+              ),
           ],
         ),
       ),
     );
+  }
+
+  WidgetSpan _imageType(TypeAbilityEnum typeAbilityEnum) {
+    WidgetSpan widgetSpan;
+
+    switch (typeAbilityEnum) {
+      case TypeAbilityEnum.area:
+        widgetSpan = WidgetSpan(
+          child: Image.asset(
+            ImageConstants.skillArea,
+            width: 15,
+          ),
+        );
+        break;
+      case TypeAbilityEnum.buff:
+        widgetSpan = WidgetSpan(
+          child: Image.asset(
+            ImageConstants.skillBuff,
+            width: 15,
+          ),
+        );
+        break;
+      case TypeAbilityEnum.dash:
+        widgetSpan = WidgetSpan(
+          child: Image.asset(
+            ImageConstants.skillDash,
+            width: 15,
+          ),
+        );
+        break;
+      case TypeAbilityEnum.debuff:
+        widgetSpan = WidgetSpan(
+          child: Image.asset(
+            ImageConstants.skillDebuff,
+            width: 15,
+          ),
+        );
+        break;
+      case TypeAbilityEnum.hindrance:
+        widgetSpan = WidgetSpan(
+          child: Image.asset(
+            ImageConstants.skillHindrance,
+            width: 15,
+          ),
+        );
+        break;
+      case TypeAbilityEnum.melee:
+        widgetSpan = WidgetSpan(
+          child: Image.asset(
+            ImageConstants.skillMelee,
+            width: 15,
+          ),
+        );
+        break;
+      case TypeAbilityEnum.ranged:
+        widgetSpan = WidgetSpan(
+          child: Image.asset(
+            ImageConstants.skillRanged,
+            width: 15,
+          ),
+        );
+        break;
+      case TypeAbilityEnum.recovery:
+        widgetSpan = WidgetSpan(
+          child: Image.asset(
+            ImageConstants.skillRecovery,
+            width: 15,
+          ),
+        );
+        break;
+      default:
+        widgetSpan = WidgetSpan(
+          child: Image.asset(
+            ImageConstants.skillSureHit,
+            width: 15,
+          ),
+        );
+    }
+    return widgetSpan;
+  }
+
+  Color _colorType(TypeAbilityEnum typeAbilityEnum) {
+    Color color;
+
+    switch (typeAbilityEnum) {
+      case TypeAbilityEnum.area:
+        color = ColorConstants.deepRed;
+        break;
+      case TypeAbilityEnum.buff:
+        color = ColorConstants.deepYellow;
+        break;
+      case TypeAbilityEnum.dash:
+        color = ColorConstants.blue;
+        break;
+      case TypeAbilityEnum.debuff:
+        color = ColorConstants.purple;
+        break;
+      case TypeAbilityEnum.hindrance:
+        color = ColorConstants.purple;
+        break;
+      case TypeAbilityEnum.melee:
+        color = ColorConstants.deepRed;
+        break;
+      case TypeAbilityEnum.ranged:
+        color = ColorConstants.deepRed;
+        break;
+      case TypeAbilityEnum.recovery:
+        color = ColorConstants.green;
+        break;
+      default:
+        color = ColorConstants.deepRed;
+    }
+    return color;
   }
 }
