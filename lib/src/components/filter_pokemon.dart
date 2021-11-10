@@ -28,15 +28,20 @@ class FilterPokemon extends StatelessWidget {
       'Speedster',
       'Supporter',
     ];
+    Widget widget;
 
     for (int index = 0; index < _options.length; index++) {
-      final ChoiceChip choiceChip = ChoiceChip(
+      widget = ChoiceChip(
         selected: index == filterIndex,
-        label: Text(
-          _options[index],
-          style: const TextStyle(color: Colors.white),
+        label: Padding(
+          padding: const EdgeInsets.all(5),
+          child: Text(
+            _options[index],
+            style: const TextStyle(color: Colors.white),
+          ),
         ),
         elevation: 0,
+        visualDensity: const VisualDensity(vertical: 2),
         pressElevation: 5,
         backgroundColor: Colors.black54,
         selectedColor: ColorConstants.background,
@@ -46,15 +51,21 @@ class FilterPokemon extends StatelessWidget {
       chips.add(
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: choiceChip,
+          child: widget,
         ),
       );
     }
 
-    return ListView(
-      physics: const BouncingScrollPhysics(),
-      scrollDirection: Axis.horizontal,
-      children: chips,
+    return SizedBox(
+      height: 60,
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: ListView(
+          physics: const BouncingScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          children: chips,
+        ),
+      ),
     );
   }
 }

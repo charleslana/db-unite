@@ -4,6 +4,7 @@ import 'package:db_unite/src/components/filter_pokemon.dart';
 import 'package:db_unite/src/constants/color_constants.dart';
 import 'package:db_unite/src/constants/image_constants.dart';
 import 'package:db_unite/src/controllers/loading_data_controller.dart';
+import 'package:db_unite/src/controllers/pokemon_list_controller.dart';
 import 'package:db_unite/src/routes/app_route_generator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,6 +16,8 @@ class PokemonListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final LoadingDataController loadingDataController =
         Get.put(LoadingDataController());
+    final PokemonListController pokemonListController =
+        Get.put(PokemonListController());
 
     return SafeArea(
       child: GestureDetector(
@@ -31,6 +34,8 @@ class PokemonListPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(12),
                   child: TextField(
+                    onChanged: (String text) {},
+                    controller: pokemonListController.textEditingController,
                     style: const TextStyle(color: ColorConstants.text),
                     decoration: InputDecoration(
                       labelText: 'Pesquisar pokémon',
@@ -38,24 +43,25 @@ class PokemonListPage extends StatelessWidget {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                       ),
+                      prefixIcon: const Icon(
+                        Icons.search,
+                        color: ColorConstants.text,
+                      ),
                       suffixIcon: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          pokemonListController.textEditingController.clear();
+                          FocusManager.instance.primaryFocus?.unfocus();
+                        },
                         icon: const Icon(
-                          Icons.search,
+                          Icons.clear,
                           color: ColorConstants.text,
                         ),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 50,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: FilterPokemon(
-                        filterIndex: loadingDataController.filterIndex.value),
-                  ),
-                ),
+                FilterPokemon(
+                    filterIndex: loadingDataController.filterIndex.value),
                 Expanded(
                   child: Stack(
                     children: [
