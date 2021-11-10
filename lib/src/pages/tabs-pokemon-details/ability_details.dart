@@ -1,7 +1,6 @@
 import 'package:db_unite/src/controllers/pokemon_details_controller.dart';
 import 'package:db_unite/src/models/translation_model.dart';
 import 'package:db_unite/src/pages/tabs-pokemon-details/components/card_ability.dart';
-import 'package:db_unite/src/pages/tabs-pokemon-details/enum/type_ability_enum.dart';
 import 'package:db_unite/src/pages/tabs-pokemon-details/models/ability_model.dart';
 import 'package:db_unite/src/pages/tabs-pokemon-details/models/effect_levels_ability_model.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +63,6 @@ class AbilityDetails extends StatelessWidget {
                 enUS: 'Dash',
                 ptBR: 'Dash',
               ),
-              typeEnum: TypeAbilityEnum.dash,
               description: TranslationModel(
                 enUS:
                     'Absol dashes in an arc, damaging all enemies hit. Absol deals damage as if enemies hit have 0 defense and bypasses shields.',
@@ -125,7 +123,6 @@ class AbilityDetails extends StatelessWidget {
                   enUS: 'Dash',
                   ptBR: 'Dash',
                 ),
-                typeEnum: TypeAbilityEnum.dash,
                 description: TranslationModel(
                   enUS:
                       'Absol dashes in an arc, damaging all enemies hit. Absol deals damage as if enemies hit have 0 defense and bypasses shields.',

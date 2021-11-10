@@ -1,5 +1,4 @@
 import 'package:db_unite/src/models/translation_model.dart';
-import 'package:db_unite/src/pages/tabs-pokemon-details/enum/type_ability_enum.dart';
 import 'package:db_unite/src/pages/tabs-pokemon-details/models/effect_levels_ability_model.dart';
 
 class AbilityModel {
@@ -11,7 +10,6 @@ class AbilityModel {
     required this.cooldownLevels,
     required this.cooldown,
     this.type,
-    this.typeEnum,
     this.description,
     required this.levels,
     required this.effectLevels,
@@ -24,7 +22,6 @@ class AbilityModel {
   final List<int> cooldownLevels;
   final List<double> cooldown;
   final TranslationModel? type;
-  final TypeAbilityEnum? typeEnum;
   final TranslationModel? description;
   final List<int> levels;
   final List<EffectLevelsAbilityModel> effectLevels;

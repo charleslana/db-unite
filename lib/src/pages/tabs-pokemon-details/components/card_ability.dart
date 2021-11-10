@@ -3,7 +3,6 @@ import 'package:db_unite/src/components/pokeball_loading.dart';
 import 'package:db_unite/src/constants/color_constants.dart';
 import 'package:db_unite/src/constants/image_constants.dart';
 import 'package:db_unite/src/controllers/loading_data_controller.dart';
-import 'package:db_unite/src/pages/tabs-pokemon-details/enum/type_ability_enum.dart';
 import 'package:db_unite/src/pages/tabs-pokemon-details/models/ability_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -177,15 +176,15 @@ class CardAbility extends StatelessWidget {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(10),
-                            child: ability.typeEnum != null
+                            child: ability.type != null
                                 ? RichText(
                                     text: TextSpan(
                                       style: TextStyle(
                                         fontSize: 14,
-                                        color: _colorType(ability.typeEnum!),
+                                        color: _colorType(ability.type!.enUS),
                                       ),
                                       children: [
-                                        _imageType(ability.typeEnum!),
+                                        _imageType(ability.type!.enUS),
                                         TextSpan(
                                           text: ' ${ability.type!.enUS}',
                                         ),
@@ -284,11 +283,11 @@ class CardAbility extends StatelessWidget {
     );
   }
 
-  WidgetSpan _imageType(TypeAbilityEnum typeAbilityEnum) {
+  WidgetSpan _imageType(String type) {
     WidgetSpan widgetSpan;
 
-    switch (typeAbilityEnum) {
-      case TypeAbilityEnum.area:
+    switch (type) {
+      case 'Area':
         widgetSpan = WidgetSpan(
           child: Image.asset(
             ImageConstants.skillArea,
@@ -296,7 +295,7 @@ class CardAbility extends StatelessWidget {
           ),
         );
         break;
-      case TypeAbilityEnum.buff:
+      case 'Buff':
         widgetSpan = WidgetSpan(
           child: Image.asset(
             ImageConstants.skillBuff,
@@ -304,7 +303,7 @@ class CardAbility extends StatelessWidget {
           ),
         );
         break;
-      case TypeAbilityEnum.dash:
+      case 'Dash':
         widgetSpan = WidgetSpan(
           child: Image.asset(
             ImageConstants.skillDash,
@@ -312,7 +311,7 @@ class CardAbility extends StatelessWidget {
           ),
         );
         break;
-      case TypeAbilityEnum.debuff:
+      case 'Debuff':
         widgetSpan = WidgetSpan(
           child: Image.asset(
             ImageConstants.skillDebuff,
@@ -320,7 +319,7 @@ class CardAbility extends StatelessWidget {
           ),
         );
         break;
-      case TypeAbilityEnum.hindrance:
+      case 'Hindrance':
         widgetSpan = WidgetSpan(
           child: Image.asset(
             ImageConstants.skillHindrance,
@@ -328,7 +327,7 @@ class CardAbility extends StatelessWidget {
           ),
         );
         break;
-      case TypeAbilityEnum.melee:
+      case 'Melee':
         widgetSpan = WidgetSpan(
           child: Image.asset(
             ImageConstants.skillMelee,
@@ -336,7 +335,7 @@ class CardAbility extends StatelessWidget {
           ),
         );
         break;
-      case TypeAbilityEnum.ranged:
+      case 'Ranged':
         widgetSpan = WidgetSpan(
           child: Image.asset(
             ImageConstants.skillRanged,
@@ -344,7 +343,7 @@ class CardAbility extends StatelessWidget {
           ),
         );
         break;
-      case TypeAbilityEnum.recovery:
+      case 'Recovery':
         widgetSpan = WidgetSpan(
           child: Image.asset(
             ImageConstants.skillRecovery,
@@ -363,32 +362,32 @@ class CardAbility extends StatelessWidget {
     return widgetSpan;
   }
 
-  Color _colorType(TypeAbilityEnum typeAbilityEnum) {
+  Color _colorType(String type) {
     Color color;
 
-    switch (typeAbilityEnum) {
-      case TypeAbilityEnum.area:
+    switch (type) {
+      case 'Area':
         color = ColorConstants.deepRed;
         break;
-      case TypeAbilityEnum.buff:
+      case 'Buff':
         color = ColorConstants.deepYellow;
         break;
-      case TypeAbilityEnum.dash:
+      case 'Dash':
         color = ColorConstants.blue;
         break;
-      case TypeAbilityEnum.debuff:
+      case 'Debuff':
         color = ColorConstants.purple;
         break;
-      case TypeAbilityEnum.hindrance:
+      case 'Hindrance':
         color = ColorConstants.purple;
         break;
-      case TypeAbilityEnum.melee:
+      case 'Melee':
         color = ColorConstants.deepRed;
         break;
-      case TypeAbilityEnum.ranged:
+      case 'Ranged':
         color = ColorConstants.deepRed;
         break;
-      case TypeAbilityEnum.recovery:
+      case 'Recovery':
         color = ColorConstants.green;
         break;
       default:
