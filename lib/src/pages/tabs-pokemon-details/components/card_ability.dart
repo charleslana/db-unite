@@ -54,14 +54,12 @@ class CardAbility extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          for (int index = 0;
-                              index < upgradeChoices!.length;
-                              index++) ...[
-                            if (index > 0)
+                          for (var i = 0; i < upgradeChoices!.length; i++) ...[
+                            if (i > 0)
                               const VerticalDivider(
                                   color: ColorConstants.yellow),
                             Expanded(
-                                child: _defaultAbility(upgradeChoices![index])),
+                                child: _defaultAbility(upgradeChoices![i])),
                           ],
                         ],
                       ),
