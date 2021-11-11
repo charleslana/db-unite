@@ -70,7 +70,20 @@ class HomePage extends StatelessWidget {
                       ),
                       Flexible(
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () => Get.dialog<dynamic>(
+                            AlertDialog(
+                              title: const Text(
+                                  'This should not be closed automatically'),
+                              content: const Text(
+                                  'This should not be closed automatically'),
+                              actions: [
+                                ElevatedButton(
+                                  onPressed: Get.back,
+                                  child: const Text('CLOSE'),
+                                )
+                              ],
+                            ),
+                          ),
                           icon: const Icon(
                             Icons.settings,
                             color: ColorConstants.text,
