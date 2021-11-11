@@ -1,6 +1,7 @@
 import 'package:db_unite/src/components/custom_circle_avatar.dart';
 import 'package:db_unite/src/constants/color_constants.dart';
 import 'package:db_unite/src/constants/image_constants.dart';
+import 'package:db_unite/src/controllers/home_controller.dart';
 import 'package:db_unite/src/controllers/loading_data_controller.dart';
 import 'package:db_unite/src/data/home_grid_data.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final LoadingDataController loadingDataController =
         Get.put(LoadingDataController());
+    final HomeController homeController = Get.put(HomeController());
 
     return WillPopScope(
       onWillPop: () async {
@@ -70,20 +72,68 @@ class HomePage extends StatelessWidget {
                       ),
                       Flexible(
                         child: IconButton(
-                          onPressed: () => Get.dialog<dynamic>(
-                            AlertDialog(
-                              title: const Text(
-                                  'This should not be closed automatically'),
-                              content: const Text(
-                                  'This should not be closed automatically'),
-                              actions: [
-                                ElevatedButton(
-                                  onPressed: Get.back,
-                                  child: const Text('CLOSE'),
-                                )
-                              ],
-                            ),
-                          ),
+                          onPressed: () {
+                            homeController.tabController.animateTo(0);
+                            Get.dialog<dynamic>(
+                              Dialog(
+                                backgroundColor:
+                                    ColorConstants.appBarBackground,
+                                child: SizedBox(
+                                  width: Get.width * 0.75,
+                                  height: Get.height * 0.50,
+                                  child: Column(
+                                    children: [
+                                      Stack(
+                                        children: [
+                                          SizedBox(
+                                            width: double.infinity,
+                                            height: 50,
+                                            child: TabBar(
+                                              controller:
+                                                  homeController.tabController,
+                                              labelColor: ColorConstants.text,
+                                              indicatorColor:
+                                                  ColorConstants.background,
+                                              isScrollable: true,
+                                              physics:
+                                                  const BouncingScrollPhysics(),
+                                              enableFeedback: true,
+                                              tabs: const [
+                                                Tab(child: Text('Idioma')),
+                                                Tab(child: Text('Nome')),
+                                              ],
+                                            ),
+                                          ),
+                                          Positioned(
+                                            right: 0,
+                                            child: IconButton(
+                                              onPressed: Get.back,
+                                              icon: const Icon(
+                                                Icons.close,
+                                                color: ColorConstants.text,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Expanded(
+                                        child: TabBarView(
+                                          physics:
+                                              const NeverScrollableScrollPhysics(),
+                                          controller:
+                                              homeController.tabController,
+                                          children: const [
+                                            Center(child: Text('Idioma')),
+                                            Center(child: Text('Nome')),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
                           icon: const Icon(
                             Icons.settings,
                             color: ColorConstants.text,

@@ -91,7 +91,6 @@ class PokemonDetailsPage extends StatelessWidget {
                     indicatorColor: ColorConstants.background,
                     isScrollable: true,
                     physics: const BouncingScrollPhysics(),
-                    onTap: (int index) {},
                     enableFeedback: true,
                     tabs: const [
                       Tab(child: Text('Info')),
