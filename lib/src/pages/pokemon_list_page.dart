@@ -93,15 +93,14 @@ class PokemonListPage extends StatelessWidget {
                               Get.toNamed<dynamic>(AppRoutes.pokemonDetails),
                             },
                             child: Column(
-                              children: const [
+                              children: [
                                 CustomCircleAvatar(
-                                  image:
-                                      'https://raw.githubusercontent.com/charleslana/api-pokemon-unite/master/pokemon/thumbnail/359.png',
+                                  image: ImageConstants()
+                                      .getPokemonThumbnail('359'),
                                   height: 60,
-                                  isNetwork: true,
                                 ),
-                                SizedBox(height: 10),
-                                Flexible(
+                                const SizedBox(height: 10),
+                                const Flexible(
                                   child: FittedBox(
                                     fit: BoxFit.scaleDown,
                                     child: Text(

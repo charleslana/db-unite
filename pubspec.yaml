@@ -13,7 +13,6 @@ dependencies:
   get: ^4.3.8
   get_storage: ^2.0.3
   http: ^0.13.4
-  cached_network_image: ^3.1.0
   percent_indicator: ^3.4.0
 
 dev_dependencies:
@@ -25,9 +24,67 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/layout/
     - assets/images/grid/
-    - assets/images/skills/
+    - assets/images/battle-items/
+    - assets/images/held-items/
+    - assets/images/layout/    
+    - assets/images/markers/
+    - assets/images/pokemon/
+    - assets/images/pokemon/003/ability/
+    - assets/images/pokemon/003/screenshot/
+    - assets/images/pokemon/006/ability/
+    - assets/images/pokemon/006/screenshot/
+    - assets/images/pokemon/009/ability/
+    - assets/images/pokemon/009/screenshot/
+    - assets/images/pokemon/025/ability/
+    - assets/images/pokemon/025/screenshot/
+    - assets/images/pokemon/038/ability/
+    - assets/images/pokemon/038/screenshot/
+    - assets/images/pokemon/040/ability/
+    - assets/images/pokemon/040/screenshot/
+    - assets/images/pokemon/068/ability/
+    - assets/images/pokemon/068/screenshot/
+    - assets/images/pokemon/080/ability/
+    - assets/images/pokemon/080/screenshot/
+    - assets/images/pokemon/094/ability/
+    - assets/images/pokemon/094/screenshot/
+    - assets/images/pokemon/122/ability/
+    - assets/images/pokemon/122/screenshot/
+    - assets/images/pokemon/143/ability/
+    - assets/images/pokemon/143/screenshot/
+    - assets/images/pokemon/242/ability/
+    - assets/images/pokemon/242/screenshot/
+    - assets/images/pokemon/282/ability/
+    - assets/images/pokemon/282/screenshot/
+    - assets/images/pokemon/359/ability/
+    - assets/images/pokemon/359/screenshot/
+    - assets/images/pokemon/445/ability/
+    - assets/images/pokemon/445/screenshot/
+    - assets/images/pokemon/448/ability/
+    - assets/images/pokemon/448/screenshot/
+    - assets/images/pokemon/473/ability/
+    - assets/images/pokemon/473/screenshot/
+    - assets/images/pokemon/558/ability/
+    - assets/images/pokemon/558/screenshot/
+    - assets/images/pokemon/658/ability/
+    - assets/images/pokemon/658/screenshot/
+    - assets/images/pokemon/663/ability/
+    - assets/images/pokemon/663/screenshot/
+    - assets/images/pokemon/700/ability/
+    - assets/images/pokemon/700/screenshot/
+    - assets/images/pokemon/807/ability/
+    - assets/images/pokemon/807/screenshot/
+    - assets/images/pokemon/815/ability/
+    - assets/images/pokemon/815/screenshot/
+    - assets/images/pokemon/820/ability/
+    - assets/images/pokemon/820/screenshot/
+    - assets/images/pokemon/830/ability/
+    - assets/images/pokemon/830/screenshot/
+    - assets/images/pokemon/845/ability/
+    - assets/images/pokemon/845/screenshot/
+    - assets/images/pokemon/portrait/
+    - assets/images/pokemon/thumbnail/
+    - assets/images/skills/    
   fonts:
     - family: HelveticaNeueLTProExtraBlack
       fonts:

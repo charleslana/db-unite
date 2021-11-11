@@ -1,5 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:db_unite/src/components/pokeball_loading.dart';
 import 'package:db_unite/src/constants/color_constants.dart';
 import 'package:db_unite/src/constants/image_constants.dart';
 import 'package:db_unite/src/controllers/loading_data_controller.dart';
@@ -83,9 +81,11 @@ class CardAbility extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Flexible(
-              child: CachedNetworkImage(
-                placeholder: (_, __) => const PokeballLoading(),
-                imageUrl: ability.imageAbility,
+              child: Image.asset(
+                ImageConstants().getPokemonAbility(
+                  ability.imagePokemon,
+                  ability.imageAbility,
+                ),
                 fit: BoxFit.scaleDown,
                 height: 50,
               ),
@@ -269,12 +269,14 @@ class CardAbility extends StatelessWidget {
           ),
         if (ability.imageScreenshot != null) ...[
           const SizedBox(height: 10),
-          CachedNetworkImage(
-            placeholder: (_, __) => const PokeballLoading(),
-            imageUrl: ability.imageScreenshot!,
+          Image.asset(
+            ImageConstants().getPokemonScreenshot(
+              ability.imagePokemon,
+              ability.imageScreenshot!,
+            ),
             fit: BoxFit.cover,
-            height: 150,
             width: double.infinity,
+            height: 150,
           ),
         ],
       ],

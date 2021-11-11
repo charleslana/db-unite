@@ -16,4 +16,20 @@ class ImageConstants {
   static const String skillRanged = 'assets/images/skills/Ranged.png';
   static const String skillRecovery = 'assets/images/skills/Recovery.png';
   static const String skillSureHit = 'assets/images/skills/Sure_Hit.png';
+
+  String getPokemonAbility(String imagePokemon, String image) {
+    return 'assets/images/pokemon/$imagePokemon/ability/$image.png';
+  }
+
+  String getPokemonScreenshot(String imagePokemon, String image) {
+    return 'assets/images/pokemon/$imagePokemon/screenshot/$image.jpg';
+  }
+
+  String getPokemonPortrait(String image) {
+    return 'assets/images/pokemon/portrait/$image.png';
+  }
+
+  String getPokemonThumbnail(String image) {
+    return 'assets/images/pokemon/thumbnail/$image.png';
+  }
 }

@@ -21,9 +21,9 @@ class AbilityDetails extends StatelessWidget {
         children: [
           CardAbility(
             ability: AbilityModel(
+              imagePokemon: '359',
               name: 'Super Luck',
-              imageAbility:
-                  'https://raw.githubusercontent.com/charleslana/api-pokemon-unite/master/pokemon/359/ability/Super_Luck.png',
+              imageAbility: 'Super_Luck',
               title: TranslationModel(
                 enUS: 'Passive Ability',
                 ptBR: 'Habilidade passiva',
@@ -40,11 +40,10 @@ class AbilityDetails extends StatelessWidget {
           ),
           CardAbility(
             ability: AbilityModel(
+              imagePokemon: '359',
               name: 'Feint',
-              imageAbility:
-                  'https://raw.githubusercontent.com/charleslana/api-pokemon-unite/master/pokemon/359/ability/Feint.png',
-              imageScreenshot:
-                  'https://raw.githubusercontent.com/charleslana/api-pokemon-unite/master/pokemon/359/screenshot/Feint.jpg',
+              imageAbility: 'Feint',
+              imageScreenshot: 'Feint',
               title: TranslationModel(
                 enUS: 'Move 1',
                 ptBR: 'Move 1',
@@ -83,9 +82,9 @@ class AbilityDetails extends StatelessWidget {
             ),
             upgradeChoices: [
               AbilityModel(
+                imagePokemon: '359',
                 name: 'Super Luck',
-                imageAbility:
-                    'https://raw.githubusercontent.com/charleslana/api-pokemon-unite/master/pokemon/359/ability/Super_Luck.png',
+                imageAbility: 'Super_Luck',
                 title: TranslationModel(
                   enUS: 'Passive Ability',
                   ptBR: 'Habilidade passiva',
@@ -100,11 +99,10 @@ class AbilityDetails extends StatelessWidget {
                 effectLevels: [],
               ),
               AbilityModel(
+                imagePokemon: '359',
                 name: 'Feint',
-                imageAbility:
-                    'https://raw.githubusercontent.com/charleslana/api-pokemon-unite/master/pokemon/359/ability/Feint.png',
-                imageScreenshot:
-                    'https://raw.githubusercontent.com/charleslana/api-pokemon-unite/master/pokemon/359/screenshot/Feint.jpg',
+                imageAbility: 'Feint',
+                imageScreenshot: 'Feint',
                 title: TranslationModel(
                   enUS: 'Move 1',
                   ptBR: 'Move 1',

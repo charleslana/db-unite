@@ -1,6 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:db_unite/src/components/pokeball_loading.dart';
 import 'package:db_unite/src/constants/color_constants.dart';
+import 'package:db_unite/src/constants/image_constants.dart';
 import 'package:db_unite/src/controllers/pokemon_details_controller.dart';
 import 'package:db_unite/src/pages/tabs-pokemon-details/components/card_info.dart';
 import 'package:db_unite/src/pages/tabs-pokemon-details/components/chip_info.dart';
@@ -30,10 +29,8 @@ class InfoDetails extends StatelessWidget {
                 flex: 2,
                 child: Column(
                   children: [
-                    CachedNetworkImage(
-                      placeholder: (_, __) => const PokeballLoading(),
-                      imageUrl:
-                          'https://raw.githubusercontent.com/charleslana/api-pokemon-unite/master/pokemon/portrait/359.png',
+                    Image.asset(
+                      ImageConstants().getPokemonPortrait('359'),
                       fit: BoxFit.fitWidth,
                       height: 200,
                     ),
@@ -161,12 +158,12 @@ class InfoDetails extends StatelessWidget {
               EvolutionInfo(
                 name: 'Squirtle',
                 level: 5,
-                image: '',
+                image: '007',
               ),
               EvolutionInfo(
                 name: 'Wartortle',
                 level: 9,
-                image: '',
+                image: '008',
               ),
             ],
           ),

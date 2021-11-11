@@ -3,6 +3,7 @@ import 'package:db_unite/src/pages/tabs-pokemon-details/models/effect_levels_abi
 
 class AbilityModel {
   const AbilityModel({
+    required this.imagePokemon,
     required this.name,
     required this.imageAbility,
     this.imageScreenshot,
@@ -15,6 +16,7 @@ class AbilityModel {
     required this.effectLevels,
   });
 
+  final String imagePokemon;
   final String name;
   final String imageAbility;
   final String? imageScreenshot;

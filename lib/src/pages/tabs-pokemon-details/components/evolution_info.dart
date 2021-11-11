@@ -1,5 +1,6 @@
 import 'package:db_unite/src/components/custom_circle_avatar.dart';
 import 'package:db_unite/src/constants/color_constants.dart';
+import 'package:db_unite/src/constants/image_constants.dart';
 import 'package:flutter/material.dart';
 
 class EvolutionInfo extends StatelessWidget {
@@ -18,11 +19,9 @@ class EvolutionInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const CustomCircleAvatar(
-          image:
-              'https://raw.githubusercontent.com/charleslana/api-pokemon-unite/master/pokemon/thumbnail/007.png',
+        CustomCircleAvatar(
+          image: ImageConstants().getPokemonThumbnail(image),
           height: 60,
-          isNetwork: true,
         ),
         const SizedBox(height: 5),
         Text(
