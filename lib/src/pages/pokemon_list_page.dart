@@ -98,6 +98,7 @@ class PokemonListPage extends StatelessWidget {
                                   image: ImageConstants()
                                       .getPokemonThumbnail('359'),
                                   height: 60,
+                                  heroTag: index,
                                 ),
                                 const SizedBox(height: 10),
                                 const Flexible(

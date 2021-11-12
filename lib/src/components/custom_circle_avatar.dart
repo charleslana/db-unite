@@ -5,11 +5,13 @@ class CustomCircleAvatar extends StatelessWidget {
   const CustomCircleAvatar({
     required this.image,
     required this.height,
+    this.heroTag,
     Key? key,
   }) : super(key: key);
 
   final String image;
   final double height;
+  final Object? heroTag;
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +28,18 @@ class CustomCircleAvatar extends StatelessWidget {
           child: Container(
             height: height,
             color: ColorConstants.avatar,
-            child: Image.asset(
-              image,
-              fit: BoxFit.fill,
-            ),
+            child: heroTag != null
+                ? Hero(
+                    tag: heroTag!,
+                    child: Image.asset(
+                      image,
+                      fit: BoxFit.fill,
+                    ),
+                  )
+                : Image.asset(
+                    image,
+                    fit: BoxFit.fill,
+                  ),
           ),
         ),
       ),

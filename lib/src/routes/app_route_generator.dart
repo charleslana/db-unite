@@ -37,7 +37,6 @@ class AppRouteGenerator {
         return GetPageRoute(
           page: () => const PokemonDetailsPage(),
           settings: settings,
-          transition: Transition.rightToLeft,
         );
       default:
         return GetPageRoute(
