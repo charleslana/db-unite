@@ -2,6 +2,7 @@ import 'package:db_unite/src/components/custom_circle_avatar.dart';
 import 'package:db_unite/src/constants/color_constants.dart';
 import 'package:db_unite/src/constants/image_constants.dart';
 import 'package:db_unite/src/controllers/home_controller.dart';
+import 'package:db_unite/src/controllers/language_controller.dart';
 import 'package:db_unite/src/controllers/loading_data_controller.dart';
 import 'package:db_unite/src/data/home_grid_data.dart';
 import 'package:flutter/material.dart';
@@ -116,18 +117,20 @@ class HomePage extends StatelessWidget {
                                           ),
                                         ],
                                       ),
-                                      Expanded(
-                                        child: TabBarView(
-                                          physics:
-                                              const NeverScrollableScrollPhysics(),
-                                          controller:
-                                              homeController.tabController,
-                                          children: const [
-                                            Center(child: Text('Idioma')),
-                                            Center(child: Text('Nome')),
-                                          ],
-                                        ),
-                                      ),
+                                      Obx(() {
+                                        return Expanded(
+                                          child: TabBarView(
+                                            physics:
+                                                const NeverScrollableScrollPhysics(),
+                                            controller:
+                                                homeController.tabController,
+                                            children: [
+                                              _languageTab(),
+                                              const Center(child: Text('Nome')),
+                                            ],
+                                          ),
+                                        );
+                                      }),
                                     ],
                                   ),
                                 ),
@@ -201,6 +204,39 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _languageTab() {
+    final LanguageController languageController = Get.put(LanguageController());
+    final List<Widget> chips = [];
+    Widget widget;
+
+    for (int index = 0; index < languageController.languages.length; index++) {
+      widget = ChoiceChip(
+        selected: languageController.selectedIndex.value == index,
+        label: Text(
+          index == 0 ? 'languageEnglish'.tr : 'languagePortuguese'.tr,
+          style: const TextStyle(color: Colors.white),
+        ),
+        elevation: 0,
+        visualDensity: const VisualDensity(vertical: 2),
+        pressElevation: 5,
+        backgroundColor: Colors.black54,
+        selectedColor: ColorConstants.background,
+        onSelected: (_) => languageController.changeLanguage(
+            languageController.languages[index].symbol, index),
+      );
+
+      chips.add(widget);
+    }
+
+    return Center(
+      child: Wrap(
+        runSpacing: 10,
+        spacing: 10,
+        children: chips,
       ),
     );
   }

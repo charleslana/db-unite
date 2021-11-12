@@ -1,6 +1,8 @@
 import 'package:db_unite/src/constants/theme_constants.dart';
 import 'package:db_unite/src/routes/app_route_generator.dart';
+import 'package:db_unite/src/services/language_service.dart';
 import 'package:db_unite/src/services/theme_service.dart';
+import 'package:db_unite/src/translation/app_translation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -17,7 +19,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'DB Unite',
-      locale: Get.deviceLocale,
+      translationsKeys: AppTranslation().translationsKeys,
+      locale: LanguageService().locale ?? Get.deviceLocale,
       fallbackLocale: const Locale('en', 'US'),
       theme: ThemeConstants().light,
       darkTheme: ThemeConstants().dark,

@@ -32,7 +32,7 @@ class FilterPokemon extends StatelessWidget {
 
     for (int index = 0; index < _options.length; index++) {
       widget = ChoiceChip(
-        selected: index == filterIndex,
+        selected: filterIndex == index,
         label: Padding(
           padding: const EdgeInsets.all(5),
           child: Text(

@@ -39,9 +39,9 @@ class SplashscreenPage extends StatelessWidget {
                 padding: const EdgeInsets.all(5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text('Version: 1.0.0'),
-                    Text('Created by Charles Lana'),
+                  children: [
+                    Text('splashscreenVersion'.trParams({'version': '1.0.0'})),
+                    const Text('Created by Charles Lana'),
                   ],
                 ),
               ),
