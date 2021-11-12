@@ -127,13 +127,15 @@ class LoadingDataPage extends StatelessWidget {
                                                                         return 'Por favor insira seu nome.';
                                                                       }
                                                                       if (value
+                                                                              .trim()
                                                                               .length >
                                                                           20) {
                                                                         return 'Seu nome deve conter no máximo 20 caracteres.';
                                                                       }
                                                                       loadingDataController
                                                                               .name =
-                                                                          value;
+                                                                          value
+                                                                              .trim();
                                                                       return null;
                                                                     },
                                                                   ),
@@ -144,9 +146,7 @@ class LoadingDataPage extends StatelessWidget {
                                                                     onTap:
                                                                         () => {
                                                                               if (key.currentState!.validate())
-                                                                                {
-                                                                                  Get.toNamed<dynamic>(AppRoutes.home),
-                                                                                }
+                                                                                Get.toNamed<dynamic>(AppRoutes.home),
                                                                             },
                                                                     text:
                                                                         'Continuar'),

@@ -1,3 +1,4 @@
+import 'package:db_unite/src/components/button_orange.dart';
 import 'package:db_unite/src/components/custom_circle_avatar.dart';
 import 'package:db_unite/src/constants/color_constants.dart';
 import 'package:db_unite/src/constants/image_constants.dart';
@@ -5,6 +6,7 @@ import 'package:db_unite/src/controllers/home_controller.dart';
 import 'package:db_unite/src/controllers/language_controller.dart';
 import 'package:db_unite/src/controllers/loading_data_controller.dart';
 import 'package:db_unite/src/data/home_grid_data.dart';
+import 'package:db_unite/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -126,7 +128,8 @@ class HomePage extends StatelessWidget {
                                                 homeController.tabController,
                                             children: [
                                               _languageTab(),
-                                              const Center(child: Text('Nome')),
+                                              _nameTab(context,
+                                                  loadingDataController),
                                             ],
                                           ),
                                         );
@@ -237,6 +240,64 @@ class HomePage extends StatelessWidget {
         runSpacing: 10,
         spacing: 10,
         children: chips,
+      ),
+    );
+  }
+
+  Widget _nameTab(
+      BuildContext context, LoadingDataController loadingDataController) {
+    final GlobalKey<FormState> key = GlobalKey<FormState>();
+
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Form(
+              key: key,
+              child: TextFormField(
+                initialValue: loadingDataController.name,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: ColorConstants.text),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  labelStyle: const TextStyle(color: ColorConstants.text),
+                  labelText: 'Nome',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                ),
+                style: const TextStyle(color: ColorConstants.text),
+                validator: (String? value) {
+                  if (value!.trim().isEmpty) {
+                    return 'Por favor insira seu nome.';
+                  }
+                  if (value.trim().length > 20) {
+                    return 'Seu nome deve conter no máximo 20 caracteres.';
+                  }
+                  if (value.trim() == loadingDataController.name) {
+                    return 'O nome não deve ser igual ao atual.';
+                  }
+                  loadingDataController.name = value.trim();
+                  return null;
+                },
+              ),
+            ),
+            const SizedBox(height: 20),
+            ButtonOrange(
+                onTap: () => {
+                      if (key.currentState!.validate())
+                        {
+                          Utils()
+                              .snackbar(context, 'Nome alterado com sucesso.'),
+                          Get.back<dynamic>(),
+                        }
+                    },
+                text: 'Alterar'),
+          ],
+        ),
       ),
     );
   }
