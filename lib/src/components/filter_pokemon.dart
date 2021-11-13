@@ -17,16 +17,16 @@ class FilterPokemon extends StatelessWidget {
         Get.put(LoadingDataController());
     final List<Widget> chips = [];
     final List<String> _options = [
-      'All',
-      'Melee',
-      'Ranged',
-      'Physical Attacker',
-      'Special Attacker',
-      'All-Rounder',
-      'Attacker',
-      'Defender',
-      'Speedster',
-      'Supporter',
+      'filterPokemonAll'.tr,
+      'filterPokemonMelee'.tr,
+      'filterPokemonRanged'.tr,
+      'filterPokemonPhysicalAttacker'.tr,
+      'filterPokemonSpecialAttacker'.tr,
+      'filterPokemonAllRounder'.tr,
+      'filterPokemonAttacker'.tr,
+      'filterPokemonDefender'.tr,
+      'filterPokemonSpeedster'.tr,
+      'filterPokemonSupporter'.tr,
     ];
     Widget widget;
 

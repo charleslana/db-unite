@@ -41,7 +41,8 @@ class SplashscreenPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text('splashscreenVersion'.trParams({'version': '1.0.0'})),
-                    const Text('Created by Charles Lana'),
+                    Text('splashscreenCreatedBy'
+                        .trParams({'name': 'Charles Lana'})),
                   ],
                 ),
               ),

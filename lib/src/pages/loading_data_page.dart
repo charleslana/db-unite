@@ -40,9 +40,9 @@ class LoadingDataPage extends StatelessWidget {
                         padding: const EdgeInsets.all(10),
                         child: loadingDataController.isConnected.value
                             ? loadingDataController.isNewVersionApp.value
-                                ? const Text(
-                                    'Alerta, seu aplicativo está desatualizado, para que possa continuar é necessário atualizar o aplicativo.\nA uma nova atualização disponível na Play Store.',
-                                    style: TextStyle(
+                                ? Text(
+                                    'loadingDataUpdateApp'.tr,
+                                    style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 16,
                                     ),
@@ -51,14 +51,14 @@ class LoadingDataPage extends StatelessWidget {
                                     ? Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
-                                        children: const [
+                                        children: [
                                           Flexible(
                                             flex: 3,
                                             child: FittedBox(
                                               fit: BoxFit.scaleDown,
                                               child: Text(
-                                                'Carregando informações da Database',
-                                                style: TextStyle(
+                                                'loadingDataInfo'.tr,
+                                                style: const TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 16,
                                                 ),
@@ -66,7 +66,8 @@ class LoadingDataPage extends StatelessWidget {
                                               ),
                                             ),
                                           ),
-                                          Flexible(child: PokeballLoading()),
+                                          const Flexible(
+                                              child: PokeballLoading()),
                                         ],
                                       )
                                     : FractionallySizedBox(
@@ -90,15 +91,17 @@ class LoadingDataPage extends StatelessWidget {
                                                           child: Center(
                                                             child: Column(
                                                               children: [
-                                                                const Text(
-                                                                  'Esta é a primeira vez que você entra no aplicativo.',
-                                                                  style: TextStyle(
+                                                                Text(
+                                                                  'loadingDataBottomSheetTextFirst'
+                                                                      .tr,
+                                                                  style: const TextStyle(
                                                                       fontSize:
                                                                           16),
                                                                 ),
-                                                                const Text(
-                                                                  'Por favor digite seu nome',
-                                                                  style: TextStyle(
+                                                                Text(
+                                                                  'loadingDataBottomSheetTextSecond'
+                                                                      .tr,
+                                                                  style: const TextStyle(
                                                                       fontSize:
                                                                           16),
                                                                 ),
@@ -111,7 +114,8 @@ class LoadingDataPage extends StatelessWidget {
                                                                     decoration:
                                                                         InputDecoration(
                                                                       labelText:
-                                                                          'Nome',
+                                                                          'loadingDataBottomSheetInput'
+                                                                              .tr,
                                                                       border:
                                                                           OutlineInputBorder(
                                                                         borderRadius:
@@ -124,13 +128,15 @@ class LoadingDataPage extends StatelessWidget {
                                                                       if (value!
                                                                           .trim()
                                                                           .isEmpty) {
-                                                                        return 'Por favor insira seu nome.';
+                                                                        return 'loadingDataBottomSheetFirstValidate'
+                                                                            .tr;
                                                                       }
                                                                       if (value
                                                                               .trim()
                                                                               .length >
                                                                           20) {
-                                                                        return 'Seu nome deve conter no máximo 20 caracteres.';
+                                                                        return 'loadingDataBottomSheetSecondValidate'
+                                                                            .tr;
                                                                       }
                                                                       loadingDataController
                                                                               .name =
@@ -149,7 +155,8 @@ class LoadingDataPage extends StatelessWidget {
                                                                                 Get.toNamed<dynamic>(AppRoutes.home),
                                                                             },
                                                                     text:
-                                                                        'Continuar'),
+                                                                        'loadingDataBottomSheetButtonValidate'
+                                                                            .tr),
                                                               ],
                                                             ),
                                                           ),
@@ -157,12 +164,14 @@ class LoadingDataPage extends StatelessWidget {
                                                       ))
                                                   : () => Get.toNamed<dynamic>(
                                                       AppRoutes.home),
-                                          text: 'Entrar',
+                                          text:
+                                              'loadingDataBottomSheetButtonStart'
+                                                  .tr,
                                         ),
                                       )
-                            : const Text(
-                                'Ocorreu um erro com a conexão do servidor, tente novamente.',
-                                style: TextStyle(
+                            : Text(
+                                'loadingDataError'.tr,
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
                                 ),
@@ -182,11 +191,11 @@ class LoadingDataPage extends StatelessWidget {
                             topRight: Radius.circular(10),
                           ),
                         ),
-                        child: const Padding(
-                          padding: EdgeInsets.all(5),
+                        child: Padding(
+                          padding: const EdgeInsets.all(5),
                           child: Text(
-                            'Certifique-se que haja conexão com a internet.',
-                            style: TextStyle(
+                            'loadingDataInternetConnection'.tr,
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 12,
                             ),

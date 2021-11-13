@@ -1,5 +1,6 @@
 import 'package:db_unite/src/constants/color_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class Utils {
   void snackbar(BuildContext context, String message) {
@@ -14,7 +15,7 @@ class Utils {
       ),
       action: SnackBarAction(
         onPressed: () {},
-        label: 'Fechar',
+        label: 'utilsCloseSnackbar'.tr,
         textColor: ColorConstants.text,
       ),
     );

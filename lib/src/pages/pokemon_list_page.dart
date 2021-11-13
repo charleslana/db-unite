@@ -40,7 +40,7 @@ class PokemonListPage extends StatelessWidget {
                     controller: pokemonListController.textEditingController,
                     style: const TextStyle(color: ColorConstants.text),
                     decoration: InputDecoration(
-                      labelText: 'Pesquisar pokémon',
+                      labelText: 'pokemonListSearchInput'.tr,
                       labelStyle: const TextStyle(color: ColorConstants.text),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),

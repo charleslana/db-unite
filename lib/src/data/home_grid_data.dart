@@ -1,6 +1,7 @@
 import 'package:db_unite/src/constants/image_constants.dart';
 import 'package:db_unite/src/models/home_grid_model.dart';
 import 'package:db_unite/src/routes/app_route_generator.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class HomeGridData {
   List<HomeGridModel> list = [
@@ -11,12 +12,12 @@ class HomeGridData {
     ),
     HomeGridModel(
       image: ImageConstants.heldItemsGrid,
-      text: 'Items Mantidos',
+      text: 'homeGridHeldItems'.tr,
       route: AppRoutes.home,
     ),
     HomeGridModel(
       image: ImageConstants.battleItemsGrid,
-      text: 'Itens de Batalha',
+      text: 'homeGridBattleItems'.tr,
       route: AppRoutes.home,
     ),
   ];

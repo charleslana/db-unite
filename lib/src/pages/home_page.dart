@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
                         child: Obx(() {
                           return RichText(
                             text: TextSpan(
-                              text: 'Olá, ',
+                              text: 'homeAppBarFirstText'.tr,
                               style: const TextStyle(
                                 color: ColorConstants.text,
                                 fontFamily: 'HelveticaNeueLTProLight',
@@ -67,9 +67,8 @@ class HomePage extends StatelessWidget {
                                     fontFamily: 'HelveticaNeueLTProMedium',
                                   ),
                                 ),
-                                const TextSpan(text: '\nSeja Bem vindo!'),
-                                const TextSpan(
-                                    text: '\nEscolha uma das opções abaixo'),
+                                TextSpan(text: 'homeAppBarSecondText'.tr),
+                                TextSpan(text: 'homeAppBarThirdText'.tr),
                               ],
                             ),
                           );
@@ -93,21 +92,32 @@ class HomePage extends StatelessWidget {
                                           SizedBox(
                                             width: double.infinity,
                                             height: 50,
-                                            child: TabBar(
-                                              controller:
-                                                  homeController.tabController,
-                                              labelColor: ColorConstants.text,
-                                              indicatorColor:
-                                                  ColorConstants.background,
-                                              isScrollable: true,
-                                              physics:
-                                                  const BouncingScrollPhysics(),
-                                              enableFeedback: true,
-                                              tabs: const [
-                                                Tab(child: Text('Idioma')),
-                                                Tab(child: Text('Nome')),
-                                              ],
-                                            ),
+                                            child: Obx(() {
+                                              loadingDataController
+                                                  .pokemonIndex.value;
+
+                                              return TabBar(
+                                                controller: homeController
+                                                    .tabController,
+                                                labelColor: ColorConstants.text,
+                                                indicatorColor:
+                                                    ColorConstants.background,
+                                                isScrollable: true,
+                                                physics:
+                                                    const BouncingScrollPhysics(),
+                                                enableFeedback: true,
+                                                tabs: [
+                                                  Tab(
+                                                      child: Text(
+                                                          'homeDialogFirstTab'
+                                                              .tr)),
+                                                  Tab(
+                                                      child: Text(
+                                                          'homeDialogSecondTab'
+                                                              .tr)),
+                                                ],
+                                              );
+                                            }),
                                           ),
                                           Positioned(
                                             right: 0,
@@ -279,7 +289,7 @@ class HomePage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25),
                   ),
                   labelStyle: const TextStyle(color: ColorConstants.text),
-                  labelText: 'Nome',
+                  labelText: 'homeDialogInput'.tr,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(25),
                   ),
@@ -287,13 +297,13 @@ class HomePage extends StatelessWidget {
                 style: const TextStyle(color: ColorConstants.text),
                 validator: (String? value) {
                   if (value!.trim().isEmpty) {
-                    return 'Por favor insira seu nome.';
+                    return 'homeDialogFirstValidate'.tr;
                   }
                   if (value.trim().length > 20) {
-                    return 'Seu nome deve conter no máximo 20 caracteres.';
+                    return 'homeDialogSecondValidate'.tr;
                   }
                   if (value.trim() == loadingDataController.name) {
-                    return 'O nome não deve ser igual ao atual.';
+                    return 'homeDialogThirdValidate'.tr;
                   }
                   loadingDataController.name = value.trim();
                   return null;
@@ -305,12 +315,12 @@ class HomePage extends StatelessWidget {
                 onTap: () => {
                       if (key.currentState!.validate())
                         {
-                          Utils()
-                              .snackbar(context, 'Nome alterado com sucesso.'),
+                          Utils().snackbar(
+                              context, 'homeSnackbarChangeSuccessfullyName'.tr),
                           Get.back<dynamic>(),
                         }
                     },
-                text: 'Alterar'),
+                text: 'homeDialogButtonValidate'.tr),
           ],
         ),
       ),
