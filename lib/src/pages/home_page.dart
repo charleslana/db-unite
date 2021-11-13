@@ -9,6 +9,7 @@ import 'package:db_unite/src/data/home_grid_data.dart';
 import 'package:db_unite/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
@@ -19,6 +20,7 @@ class HomePage extends StatelessWidget {
     final LoadingDataController loadingDataController =
         Get.put(LoadingDataController());
     final HomeController homeController = Get.put(HomeController());
+    const int columnCount = 2;
 
     return WillPopScope(
       onWillPop: () async {
@@ -164,42 +166,55 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    GridView.builder(
-                      physics: const BouncingScrollPhysics(),
-                      padding: const EdgeInsets.all(12),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: Get.width / (Get.height / 1.5),
-                      ),
-                      itemCount: HomeGridData().list.length,
-                      itemBuilder: (_, index) {
-                        final homeGrid = HomeGridData().list[index];
+                    AnimationLimiter(
+                      child: GridView.builder(
+                        physics: const BouncingScrollPhysics(),
+                        padding: const EdgeInsets.all(12),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: columnCount,
+                          childAspectRatio: Get.width / (Get.height / 1.5),
+                        ),
+                        itemCount: HomeGridData().list.length,
+                        itemBuilder: (_, index) {
+                          final homeGrid = HomeGridData().list[index];
 
-                        return GestureDetector(
-                          onTap: () => Get.toNamed<dynamic>(homeGrid.route),
-                          child: Column(
-                            children: [
-                              CustomCircleAvatar(
-                                image: homeGrid.image,
-                                height: 100,
-                              ),
-                              const SizedBox(height: 10),
-                              Flexible(
-                                child: FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  child: Text(
-                                    homeGrid.text,
-                                    style: const TextStyle(
-                                      color: ColorConstants.text,
-                                      fontSize: 18,
-                                    ),
+                          return AnimationConfiguration.staggeredGrid(
+                            position: index,
+                            duration: const Duration(milliseconds: 375),
+                            columnCount: columnCount,
+                            child: SlideAnimation(
+                              verticalOffset: 50,
+                              child: FadeInAnimation(
+                                child: GestureDetector(
+                                  onTap: () =>
+                                      Get.toNamed<dynamic>(homeGrid.route),
+                                  child: Column(
+                                    children: [
+                                      CustomCircleAvatar(
+                                        image: homeGrid.image,
+                                        height: 100,
+                                      ),
+                                      const SizedBox(height: 10),
+                                      Flexible(
+                                        child: FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: Text(
+                                            homeGrid.text,
+                                            style: const TextStyle(
+                                              color: ColorConstants.text,
+                                              fontSize: 18,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
-                        );
-                      },
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   ],
                 ),

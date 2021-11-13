@@ -7,6 +7,7 @@ import 'package:db_unite/src/controllers/loading_data_controller.dart';
 import 'package:db_unite/src/controllers/pokemon_list_controller.dart';
 import 'package:db_unite/src/routes/app_route_generator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
 class PokemonListPage extends StatelessWidget {
@@ -18,6 +19,7 @@ class PokemonListPage extends StatelessWidget {
         Get.put(LoadingDataController());
     final PokemonListController pokemonListController =
         Get.put(PokemonListController());
+    const int columnCount = 3;
 
     return SafeArea(
       child: GestureDetector(
@@ -76,47 +78,57 @@ class PokemonListPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      GridView.builder(
-                        physics: const BouncingScrollPhysics(),
-                        padding: const EdgeInsets.all(12),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          childAspectRatio: Get.width / (Get.height / 1.5),
-                        ),
-                        itemCount: pokemonList.length + 26,
-                        itemBuilder: (_, int index) {
-                          return GestureDetector(
-                            onTap: () => {
-                              loadingDataController
-                                ..pokemonIndex.value = index
-                                ..pokemonLevel.value = 1,
-                              Get.toNamed<dynamic>(AppRoutes.pokemonDetails),
-                            },
-                            child: Column(
-                              children: [
-                                CustomCircleAvatar(
-                                  image: ImageConstants()
-                                      .getPokemonThumbnail('359'),
-                                  height: 60,
-                                  heroTag: index,
-                                ),
-                                const SizedBox(height: 10),
-                                const Flexible(
-                                  child: FittedBox(
-                                    fit: BoxFit.scaleDown,
-                                    child: Text(
-                                      'Absol',
-                                      style: TextStyle(
-                                        color: ColorConstants.text,
-                                        fontSize: 16,
+                      AnimationLimiter(
+                        child: GridView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          padding: const EdgeInsets.all(12),
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: columnCount,
+                            childAspectRatio: Get.width / (Get.height / 1.5),
+                          ),
+                          itemCount: pokemonList.length + 26,
+                          itemBuilder: (_, int index) {
+                            return AnimationConfiguration.staggeredGrid(
+                              position: index,
+                              duration: const Duration(milliseconds: 375),
+                              columnCount: columnCount,
+                              child: ScaleAnimation(
+                                child: GestureDetector(
+                                  onTap: () => {
+                                    loadingDataController
+                                      ..pokemonIndex.value = index
+                                      ..pokemonLevel.value = 1,
+                                    Get.toNamed<dynamic>(
+                                        AppRoutes.pokemonDetails),
+                                  },
+                                  child: Column(
+                                    children: [
+                                      CustomCircleAvatar(
+                                        image: ImageConstants()
+                                            .getPokemonThumbnail('359'),
+                                        height: 60,
                                       ),
-                                    ),
+                                      const SizedBox(height: 10),
+                                      const Flexible(
+                                        child: FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: Text(
+                                            'Absol',
+                                            style: TextStyle(
+                                              color: ColorConstants.text,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ],
-                            ),
-                          );
-                        },
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ],
                   ),
