@@ -21,57 +21,84 @@ class StatsDetails extends StatelessWidget {
           (states) => ColorConstants.appBarBackground),
       columns: [
         DataColumn2(
-          label: Text(
-            'pokemonDetailsStatsLevel'.tr,
-            style: const TextStyle(color: ColorConstants.gray),
+          label: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              'pokemonDetailsStatsLevel'.tr,
+              style: const TextStyle(color: ColorConstants.gray),
+            ),
           ),
         ),
         DataColumn2(
-          label: Text(
-            'pokemonDetailsStatsHP'.tr,
-            style: const TextStyle(color: ColorConstants.gray),
+          label: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              'pokemonDetailsStatsHP'.tr,
+              style: const TextStyle(color: ColorConstants.gray),
+            ),
           ),
         ),
         DataColumn2(
-          label: Text(
-            'pokemonDetailsStatsAttack'.tr,
-            style: const TextStyle(color: ColorConstants.gray),
+          label: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              'pokemonDetailsStatsAttack'.tr,
+              style: const TextStyle(color: ColorConstants.gray),
+            ),
           ),
         ),
         DataColumn2(
-          label: Text(
-            'pokemonDetailsStatsDef'.tr,
-            style: const TextStyle(color: ColorConstants.gray),
+          label: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              'pokemonDetailsStatsDef'.tr,
+              style: const TextStyle(color: ColorConstants.gray),
+            ),
           ),
         ),
         DataColumn2(
-          label: Text(
-            'pokemonDetailsStatsSpAttack'.tr,
-            style: const TextStyle(color: ColorConstants.gray),
+          label: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              'pokemonDetailsStatsSpAttack'.tr,
+              style: const TextStyle(color: ColorConstants.gray),
+            ),
           ),
         ),
         DataColumn2(
-          label: Text(
-            'pokemonDetailsStatsSpDef'.tr,
-            style: const TextStyle(color: ColorConstants.gray),
+          label: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              'pokemonDetailsStatsSpDef'.tr,
+              style: const TextStyle(color: ColorConstants.gray),
+            ),
           ),
         ),
         DataColumn2(
-          label: Text(
-            'pokemonDetailsStatsCritRate'.tr,
-            style: const TextStyle(color: ColorConstants.gray),
+          label: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              'pokemonDetailsStatsCritRate'.tr,
+              style: const TextStyle(color: ColorConstants.gray),
+            ),
           ),
         ),
         DataColumn2(
-          label: Text(
-            'pokemonDetailsStatsCDR'.tr,
-            style: const TextStyle(color: ColorConstants.gray),
+          label: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              'pokemonDetailsStatsCDR'.tr,
+              style: const TextStyle(color: ColorConstants.gray),
+            ),
           ),
         ),
         DataColumn2(
-          label: Text(
-            'pokemonDetailsStatsLifesteal'.tr,
-            style: const TextStyle(color: ColorConstants.gray),
+          label: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              'pokemonDetailsStatsLifesteal'.tr,
+              style: const TextStyle(color: ColorConstants.gray),
+            ),
           ),
         ),
       ],
@@ -84,57 +111,84 @@ class StatsDetails extends StatelessWidget {
           }),
           cells: [
             DataCell(
-              Text(
-                (index + 1).toString(),
-                style: const TextStyle(color: ColorConstants.text),
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  (index + 1).toString(),
+                  style: const TextStyle(color: ColorConstants.text),
+                ),
               ),
             ),
             const DataCell(
-              Text(
-                '3000',
-                style: TextStyle(color: ColorConstants.text),
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  '3000',
+                  style: TextStyle(color: ColorConstants.text),
+                ),
               ),
             ),
             const DataCell(
-              Text(
-                '170',
-                style: TextStyle(color: ColorConstants.text),
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  '170',
+                  style: TextStyle(color: ColorConstants.text),
+                ),
               ),
             ),
             const DataCell(
-              Text(
-                '52',
-                style: TextStyle(color: ColorConstants.text),
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  '52',
+                  style: TextStyle(color: ColorConstants.text),
+                ),
               ),
             ),
             const DataCell(
-              Text(
-                '20',
-                style: TextStyle(color: ColorConstants.text),
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  '20',
+                  style: TextStyle(color: ColorConstants.text),
+                ),
               ),
             ),
             const DataCell(
-              Text(
-                '36',
-                style: TextStyle(color: ColorConstants.text),
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  '36',
+                  style: TextStyle(color: ColorConstants.text),
+                ),
               ),
             ),
             const DataCell(
-              Text(
-                '0%',
-                style: TextStyle(color: ColorConstants.text),
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  '0%',
+                  style: TextStyle(color: ColorConstants.text),
+                ),
               ),
             ),
             const DataCell(
-              Text(
-                '0%',
-                style: TextStyle(color: ColorConstants.text),
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  '0%',
+                  style: TextStyle(color: ColorConstants.text),
+                ),
               ),
             ),
             const DataCell(
-              Text(
-                '0%',
-                style: TextStyle(color: ColorConstants.text),
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  '0%',
+                  style: TextStyle(color: ColorConstants.text),
+                ),
               ),
             ),
           ],
