@@ -1,5 +1,7 @@
 import 'package:db_unite/src/constants/color_constants.dart';
+import 'package:db_unite/src/controllers/pokemon_details_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class StatsDetails extends StatelessWidget {
@@ -7,9 +9,14 @@ class StatsDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final PokemonDetailsController pokemonDetailsController =
+        Get.put(PokemonDetailsController());
+
     return SingleChildScrollView(
+      controller: pokemonDetailsController.scrollControllerStatsY,
       physics: const BouncingScrollPhysics(),
       child: SingleChildScrollView(
+        controller: pokemonDetailsController.scrollControllerStatsX,
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         child: DataTable(

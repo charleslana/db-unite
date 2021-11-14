@@ -6,6 +6,8 @@ class PokemonDetailsController extends GetxController
   late TabController tabController;
   final ScrollController scrollControllerInfo = ScrollController();
   final ScrollController scrollControllerAbility = ScrollController();
+  final ScrollController scrollControllerStatsY = ScrollController();
+  final ScrollController scrollControllerStatsX = ScrollController();
 
   @override
   void onInit() {
@@ -25,6 +27,10 @@ class PokemonDetailsController extends GetxController
           break;
         case 1:
           scrollToUp(scrollControllerAbility);
+          break;
+        case 2:
+          scrollToUp(scrollControllerStatsY);
+          scrollToUp(scrollControllerStatsX);
           break;
       }
     }
