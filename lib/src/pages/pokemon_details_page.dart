@@ -4,6 +4,7 @@ import 'package:db_unite/src/controllers/loading_data_controller.dart';
 import 'package:db_unite/src/controllers/pokemon_details_controller.dart';
 import 'package:db_unite/src/pages/tabs-pokemon-details/ability_details.dart';
 import 'package:db_unite/src/pages/tabs-pokemon-details/info_details.dart';
+import 'package:db_unite/src/pages/tabs-pokemon-details/stats_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -111,7 +112,7 @@ class PokemonDetailsPage extends StatelessWidget {
                     children: const [
                       InfoDetails(),
                       AbilityDetails(),
-                      Center(child: Text('Stats')),
+                      StatsDetails(),
                       Center(child: Text('Builds')),
                     ],
                   ),

@@ -85,6 +85,7 @@ class AbilityDetails extends StatelessWidget {
                 imagePokemon: '359',
                 name: 'Night Slash',
                 imageAbility: 'Night_Slash',
+                imageScreenshot: 'Night_Slash',
                 cooldownLevels: [
                   1,
                   5,
@@ -167,6 +168,7 @@ class AbilityDetails extends StatelessWidget {
                 imagePokemon: '359',
                 name: 'Pursuit',
                 imageAbility: 'Pursuit',
+                imageScreenshot: 'Pursuit',
                 cooldownLevels: [
                   1,
                   5,

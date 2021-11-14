@@ -87,7 +87,7 @@ class InfoDetails extends StatelessWidget {
                           child: Column(
                             children: [
                               CardInfo(
-                                title: 'pokemonDetailsInfoHp'.tr,
+                                title: 'pokemonDetailsInfoHP'.tr,
                                 value: loadingDataController.pokemonIndex.value
                                     .toString(),
                                 isOpacity: true,
