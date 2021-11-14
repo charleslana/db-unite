@@ -87,40 +87,40 @@ class InfoDetails extends StatelessWidget {
                           child: Column(
                             children: [
                               CardInfo(
-                                title: 'HP',
+                                title: 'pokemonDetailsInfoHp'.tr,
                                 value: loadingDataController.pokemonIndex.value
                                     .toString(),
                                 isOpacity: true,
                               ),
-                              const CardInfo(
-                                title: 'Attack',
+                              CardInfo(
+                                title: 'pokemonDetailsInfoAttack'.tr,
                                 value: '150',
                               ),
-                              const CardInfo(
-                                title: 'Defense',
+                              CardInfo(
+                                title: 'pokemonDetailsInfoDefense'.tr,
                                 value: '100',
                                 isOpacity: true,
                               ),
-                              const CardInfo(
-                                title: 'Sp. Attack',
+                              CardInfo(
+                                title: 'pokemonDetailsInfoSpAttack'.tr,
                                 value: '50',
                               ),
-                              const CardInfo(
-                                title: 'Sp. Defense',
+                              CardInfo(
+                                title: 'pokemonDetailsInfoSpDefense'.tr,
                                 value: '70',
                                 isOpacity: true,
                               ),
-                              const CardInfo(
-                                title: 'Crit Rate',
+                              CardInfo(
+                                title: 'pokemonDetailsInfoCritRate'.tr,
                                 value: '0%',
                               ),
-                              const CardInfo(
-                                title: 'CD Reduction',
+                              CardInfo(
+                                title: 'pokemonDetailsInfoCDReduction'.tr,
                                 value: '0%',
                                 isOpacity: true,
                               ),
-                              const CardInfo(
-                                title: 'Lifesteal',
+                              CardInfo(
+                                title: 'pokemonDetailsInfoLifesteal'.tr,
                                 value: '0%',
                               ),
                             ],
@@ -132,10 +132,10 @@ class InfoDetails extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5),
                       child: RichText(
-                        text: const TextSpan(
-                          text: 'Note: ',
-                          style: TextStyle(color: ColorConstants.yellow),
-                          children: [
+                        text: TextSpan(
+                          text: 'pokemonDetailsInfoNote'.tr,
+                          style: const TextStyle(color: ColorConstants.yellow),
+                          children: const [
                             TextSpan(
                               text:
                                   'Only basic attacks can critically strike, but Blastoise has 0% base Critical-Hit rate at all levels.',
@@ -149,24 +149,24 @@ class InfoDetails extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const PercentStatusInfo(
-                      title: 'Offense',
+                    PercentStatusInfo(
+                      title: 'pokemonDetailsInfoOffense'.tr,
                       value: 4,
                     ),
-                    const PercentStatusInfo(
-                      title: 'Endurance',
+                    PercentStatusInfo(
+                      title: 'pokemonDetailsInfoEndurance'.tr,
                       value: 7,
                     ),
-                    const PercentStatusInfo(
-                      title: 'Mobility',
+                    PercentStatusInfo(
+                      title: 'pokemonDetailsInfoMobility'.tr,
                       value: 4,
                     ),
-                    const PercentStatusInfo(
-                      title: 'Scoring',
+                    PercentStatusInfo(
+                      title: 'pokemonDetailsInfoScoring'.tr,
                       value: 4,
                     ),
-                    const PercentStatusInfo(
-                      title: 'Support',
+                    PercentStatusInfo(
+                      title: 'pokemonDetailsInfoSupport'.tr,
                       value: 6,
                     ),
                     const SizedBox(height: 20),

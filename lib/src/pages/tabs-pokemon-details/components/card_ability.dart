@@ -36,7 +36,8 @@ class CardAbility extends StatelessWidget {
                             child: Divider(color: ColorConstants.yellow)),
                         const SizedBox(width: 10),
                         Text(
-                          '${ability.name} Upgrade Choices',
+                          'pokemonDetailsAbilityUpgradeChoices'
+                              .trParams({'ability': ability.name}),
                           style: const TextStyle(
                             fontSize: 20,
                             color: ColorConstants.gray,
@@ -110,7 +111,9 @@ class CardAbility extends StatelessWidget {
                     FittedBox(
                       fit: BoxFit.scaleDown,
                       child: Text(
-                        ability.title!.enUS,
+                        'languageCode'.tr == 'en'
+                            ? ability.title!.enUS
+                            : ability.title!.ptBR,
                         style: const TextStyle(
                           fontSize: 16,
                           color: ColorConstants.gray,
@@ -167,31 +170,32 @@ class CardAbility extends StatelessWidget {
                             }),
                           ),
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.black54,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: ability.type != null
-                                ? RichText(
-                                    text: TextSpan(
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: _colorType(ability.type!.enUS),
-                                      ),
-                                      children: [
-                                        _imageType(ability.type!.enUS),
-                                        TextSpan(
-                                          text: ' ${ability.type!.enUS}',
-                                        ),
-                                      ],
+                        if (ability.type != null)
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.black54,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: RichText(
+                                text: TextSpan(
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: _colorType(ability.type!.enUS),
+                                  ),
+                                  children: [
+                                    _imageType(ability.type!.enUS),
+                                    TextSpan(
+                                      text: 'languageCode'.tr == 'en'
+                                          ? ' ${ability.type!.enUS}'
+                                          : ' ${ability.type!.ptBR}',
                                     ),
-                                  )
-                                : null,
+                                  ],
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
                       ],
                     ),
                 ],
@@ -202,7 +206,9 @@ class CardAbility extends StatelessWidget {
         const SizedBox(height: 10),
         if (ability.description != null)
           Text(
-            ability.description!.enUS,
+            'languageCode'.tr == 'en'
+                ? ability.description!.enUS
+                : ability.description!.ptBR,
             style: const TextStyle(
               fontSize: 16,
               color: ColorConstants.gray,
@@ -215,7 +221,8 @@ class CardAbility extends StatelessWidget {
             children: [
               if (effectLevel.level != null)
                 Text(
-                  'Level ${effectLevel.level}',
+                  'pokemonDetailsAbilityLevel'
+                      .trParams({'level': effectLevel.level.toString()}),
                   style: const TextStyle(
                     fontSize: 16,
                     color: ColorConstants.deepYellow,
@@ -223,7 +230,9 @@ class CardAbility extends StatelessWidget {
                 ),
               if (effectLevel.descriptionLevel != null)
                 Text(
-                  effectLevel.descriptionLevel!.enUS,
+                  'languageCode'.tr == 'en'
+                      ? effectLevel.descriptionLevel!.enUS
+                      : effectLevel.descriptionLevel!.ptBR,
                   style: const TextStyle(
                     fontSize: 16,
                     color: ColorConstants.gray,
@@ -233,7 +242,9 @@ class CardAbility extends StatelessWidget {
               const SizedBox(height: 10),
               if (effectLevel.name != null)
                 Text(
-                  effectLevel.name!.enUS,
+                  'languageCode'.tr == 'en'
+                      ? effectLevel.name!.enUS
+                      : effectLevel.name!.ptBR,
                   style: const TextStyle(
                     fontSize: 18,
                     color: ColorConstants.gray,
@@ -241,7 +252,9 @@ class CardAbility extends StatelessWidget {
                 ),
               if (effectLevel.description != null)
                 Text(
-                  effectLevel.description!.enUS,
+                  'languageCode'.tr == 'en'
+                      ? effectLevel.description!.enUS
+                      : effectLevel.description!.ptBR,
                   style: const TextStyle(
                     fontSize: 16,
                     color: ColorConstants.gray,
@@ -250,7 +263,8 @@ class CardAbility extends StatelessWidget {
                 ),
               if (effectLevel.formula != null)
                 Text(
-                  'Formula: ${effectLevel.formula}',
+                  'pokemonDetailsAbilityFormula'
+                      .trParams({'formula': effectLevel.formula!}),
                   style: const TextStyle(
                     fontSize: 17,
                     color: ColorConstants.yellow,
@@ -258,7 +272,8 @@ class CardAbility extends StatelessWidget {
                 ),
               if (effectLevel.value != null)
                 Text(
-                  'Value: ${effectLevel.value}',
+                  'pokemonDetailsAbilityValue'
+                      .trParams({'value': effectLevel.value.toString()}),
                   style: const TextStyle(
                     fontSize: 18,
                     color: ColorConstants.red,

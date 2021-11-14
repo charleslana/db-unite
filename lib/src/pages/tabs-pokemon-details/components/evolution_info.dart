@@ -2,6 +2,7 @@ import 'package:db_unite/src/components/custom_circle_avatar.dart';
 import 'package:db_unite/src/constants/color_constants.dart';
 import 'package:db_unite/src/constants/image_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class EvolutionInfo extends StatelessWidget {
   const EvolutionInfo({
@@ -33,7 +34,7 @@ class EvolutionInfo extends StatelessWidget {
         ),
         const SizedBox(height: 5),
         Text(
-          'Evolves At $level',
+          'pokemonDetailsInfoEvolvesAt'.trParams({'level': level.toString()}),
           style: const TextStyle(
             fontSize: 15,
             fontFamily: 'HelveticaNeueLTProLight',

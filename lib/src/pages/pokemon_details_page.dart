@@ -65,7 +65,10 @@ class PokemonDetailsPage extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'Nível ${loadingDataController.pokemonLevel.value.toStringAsFixed(0)}',
+                  'pokemonDetailsLevel'.trParams({
+                    'level': loadingDataController.pokemonLevel.value
+                        .toStringAsFixed(0)
+                  }),
                   style: const TextStyle(
                     fontSize: 20,
                     color: Colors.white,
@@ -92,11 +95,11 @@ class PokemonDetailsPage extends StatelessWidget {
                     isScrollable: true,
                     physics: const BouncingScrollPhysics(),
                     enableFeedback: true,
-                    tabs: const [
-                      Tab(child: Text('Info')),
-                      Tab(child: Text('Habilidades')),
-                      Tab(child: Text('Estatísticas')),
-                      Tab(child: Text('Builds')),
+                    tabs: [
+                      Tab(child: Text('pokemonDetailsInfo'.tr)),
+                      Tab(child: Text('pokemonDetailsAbilities'.tr)),
+                      Tab(child: Text('pokemonDetailsStats'.tr)),
+                      Tab(child: Text('pokemonDetailsBuilds'.tr)),
                     ],
                   ),
                 ),
@@ -108,7 +111,7 @@ class PokemonDetailsPage extends StatelessWidget {
                     children: const [
                       InfoDetails(),
                       AbilityDetails(),
-                      Center(child: Text('Estatísticas')),
+                      Center(child: Text('Stats')),
                       Center(child: Text('Builds')),
                     ],
                   ),
